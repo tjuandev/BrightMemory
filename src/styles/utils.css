@@ -1,0 +1,94 @@
+/* Modal Utils */
+
+.modalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalContainer > div {
+  background: var(--bg-light);
+  border-radius: 1.5rem;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalHeader {
+  margin-top: 1.8rem;
+  text-align: center;
+}
+
+.modalHeader > strong {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.closeButton {
+  background: var(--red);
+  border: none;
+  color: var(--white);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.8rem;
+  font-weight: bolder;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Buttons Utils */
+
+.button-green {
+  background: var(--green);
+  color: var(--white);
+}
+
+.button-blue {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.button-red {
+  background: var(--red);
+  color: var(--white);
+}
+
+/* Deck Utils */
+
+.deck {
+  background: #f4f4f4;
+  height: 14.5rem;
+  width: 11rem;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.deck > span {
+  position: absolute;
+  top: 1rem;
+  left: 1.1rem;
+  background: var(--red);
+  border-radius: 50%;
+  padding: 0.3rem 0.35rem;
+  color: #f4f4f4;
+  font-size: 0.8rem;
+}
+
+.deck img {
+  margin-top: 3.25rem;
+}
+
+.deck strong {
+  margin-top: 1.7rem;
+  font-weight: 500;
+}

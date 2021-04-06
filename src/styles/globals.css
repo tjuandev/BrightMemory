@@ -1,0 +1,15 @@
+:root {
+  --bg-light: #dcdcdc;
+  --main-dark: #070a13;
+  --white: #f4f4f4;
+  --green: #5bcf00;
+  --blue: #1e78ff;
+  --red: #eb5757;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fira Code";
+}

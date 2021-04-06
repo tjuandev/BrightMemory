@@ -1,0 +1,45 @@
+.customSize {
+  width: 60vw;
+  height: 35rem;
+}
+
+.deckInfoContainer {
+  display: flex;
+  width: 80%;
+}
+
+.deckInfo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+.deckInfo div:first-child {
+  margin-bottom: 1.3rem;
+}
+
+.deckStudyInfo {
+  font-size: 1.15rem;
+  width: 80%;
+}
+
+.deckStudyInfo > ul {
+  list-style: none;
+  margin-bottom: 2rem;
+  line-height: 2.25rem;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.Button {
+  height: 2rem;
+  margin-bottom: 0.5rem;
+
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
