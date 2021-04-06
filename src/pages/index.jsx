@@ -19,9 +19,9 @@ export default function Home() {
     isCardModalOpen,
   } = useContext(ModalContext);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const bob = async () => {
-      const res = await fetch("/api/deck/create", {
+      const res = await fetch("/api/deck/readAll", {
         method: "GET",
       });
 
@@ -31,7 +31,7 @@ export default function Home() {
     };
 
     bob();
-  }, []);
+  }, []); */
 
   return (
     <div className={styles.container}>

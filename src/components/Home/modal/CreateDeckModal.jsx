@@ -10,7 +10,7 @@ export default function CreateDeckModal() {
   const { loading, Loading, fetchDecks } = useContext(DeckContext);
   const { deactivateModal } = useContext(ModalContext);
 
-  const db = firebase.firestore();
+  const db = firebase.firestore(); // NOTE Remover depois
 
   return (
     <div className={styles.modalContainer}>
@@ -27,7 +27,7 @@ export default function CreateDeckModal() {
               X
             </button>
             <form
-              onSubmit={(item) => {
+              onSubmit={async (item) => {
                 item.preventDefault();
                 Loading(true);
 
@@ -40,13 +40,29 @@ export default function CreateDeckModal() {
                   created_at: new Date().getTime(),
                 };
 
-                db.collection("decks")
+                await fetch("/api/deck/create", {
+                  method: "POST",
+                  body: JSON.stringify(deckSchema),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                })
+                  .then(() => {
+                    fetchDecks(); // FIXME Talvez seja um erro ficar dando esse fetchDecks toda vez que criamos um deck
+                    Loading(false);
+                    deactivateModal("CreateDeckModal");
+                  })
+                  .catch((e) => {
+                    console.log(e);
+                  });
+
+                /* db.collection("decks")
                   .add(deckSchema)
                   .then(() => {
                     fetchDecks();
                     Loading(false);
                     deactivateModal("CreateDeckModal");
-                  });
+                  }); */
               }}
             >
               <label htmlFor="deck_name">Nome do Deck</label>

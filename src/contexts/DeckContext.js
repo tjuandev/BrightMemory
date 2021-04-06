@@ -23,8 +23,8 @@ const DeckContextProvider = ({ children }) => {
 
   let decks = []; // Var global to decks.
 
-  function fetchDecks() {
-    db.collection("decks")
+  async function fetchDecks() {
+    /* db.collection("decks")
       .orderBy("created_at", "desc")
       .get()
       .then((snap) => {
@@ -32,7 +32,17 @@ const DeckContextProvider = ({ children }) => {
           decks = [...decks, { ...deck.data(), id: deck.id }];
         });
         setDeckArray(decks);
+      }); */
+
+    const data = await fetch("/api/deck/readAll", {
+      method: "GET",
+    });
+    data.json().then((deck) => {
+      deck.forEach(() => {
+        decks = [...deck];
       });
+      setDeckArray(decks);
+    });
   }
 
   let cards = [];
