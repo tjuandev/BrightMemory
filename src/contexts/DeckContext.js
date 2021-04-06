@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import firebase from "../../firebase";
 
 const DeckContext = createContext({});
 
@@ -23,13 +22,14 @@ const DeckContextProvider = ({ children }) => {
 
   async function fetchDecks() {
     // Feito
-    const data = await fetch("/api/deck/getDecks", {
+    const data = await fetch("/api/deck/get", {
       method: "GET",
     });
     data.json().then((deck) => {
       deck.forEach(() => {
         decks = [...deck];
       });
+
       setDeckArray(decks);
     });
   }
@@ -37,7 +37,8 @@ const DeckContextProvider = ({ children }) => {
   let cards = [];
 
   async function fetchCards(id) {
-    const data = await fetch("/api/deck/getCards", {
+    Loading(true);
+    const data = await fetch("/api/card/get", {
       method: "POST",
       body: JSON.stringify({ id }),
       headers: {
@@ -47,15 +48,15 @@ const DeckContextProvider = ({ children }) => {
 
     data.json().then((deck) => {
       cards = [...deck[0].cards];
-
       setCurrentCard(cards[0]);
       setCardsArray(cards);
+      Loading(false);
     });
   }
 
   function createCards(id, front, back) {
     Loading(true);
-    fetch("/api/deck/createCard", {
+    fetch("/api/card/create", {
       method: "POST",
       body: JSON.stringify({ id, front, back }),
       headers: {
@@ -66,20 +67,24 @@ const DeckContextProvider = ({ children }) => {
     });
   }
 
-  function deleteDeck(id) {
+  async function deleteDeck(id) {
     Loading(true);
-    db.collection("decks")
-      .doc(id)
-      .delete()
-      .then(() => {
-        const changedArray = deckArray.filter((deck) => {
-          if (deck.id !== id) {
-            return true;
-          }
-        });
-        setDeckArray(changedArray);
-        Loading(false);
+
+    await fetch("/api/deck/delete", {
+      method: "POST",
+      body: JSON.stringify({ id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => {
+      const changedArray = deckArray.filter((deck) => {
+        if (deck._id !== id) {
+          return true;
+        }
       });
+      setDeckArray(changedArray);
+      Loading(false);
+    });
   }
 
   function Loading(active) {

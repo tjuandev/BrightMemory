@@ -24,6 +24,7 @@ export default function Decks() {
             description={deck.description}
             deck_id={deck._id}
             photo_id={deck.photo_id}
+            cards={deck.cards}
             key={uuidv4()}
             activateModal={activateModal}
           />

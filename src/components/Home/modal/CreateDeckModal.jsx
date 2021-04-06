@@ -4,13 +4,9 @@ import { ModalContext } from "../../../contexts/ModalContext";
 
 import styles from "../../../styles/Home/modal/CreateDeckModal.module.css";
 
-import firebase from "../../../../firebase";
-
 export default function CreateDeckModal() {
   const { loading, Loading, fetchDecks } = useContext(DeckContext);
   const { deactivateModal } = useContext(ModalContext);
-
-  const db = firebase.firestore(); // NOTE Remover depois
 
   return (
     <div className={styles.modalContainer}>
@@ -36,6 +32,7 @@ export default function CreateDeckModal() {
                   description: item.target.deck_description.value,
                   pendent: false,
                   photo_id: 1,
+                  cards: [],
                   cards_number: 0,
                   created_at: new Date().getTime(),
                 };

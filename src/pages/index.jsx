@@ -19,19 +19,7 @@ export default function Home() {
     isCardModalOpen,
   } = useContext(ModalContext);
 
-  /* useEffect(() => {
-    const bob = async () => {
-      const res = await fetch("/api/deck/getCards", {
-        method: "POST",
-        body: JSON.stringify({
-          id: "606c788968898210ea6d5617",
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
-    };
-
-    bob();
-  }, []); */
+  console.log(currentDeckActive.cards);
 
   return (
     <div className={styles.container}>
