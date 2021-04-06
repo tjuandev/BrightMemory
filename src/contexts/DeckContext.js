@@ -13,8 +13,6 @@ const DeckContextProvider = ({ children }) => {
   const [isAnswer, setIsAnswer] = useState(false);
   const [isStudyFinished, setIsStudyFinished] = useState(false);
 
-  const db = firebase.firestore();
-
   function fetchUserInfo(name, email, picture) {
     const data = { name, email, picture };
 
@@ -24,17 +22,8 @@ const DeckContextProvider = ({ children }) => {
   let decks = []; // Var global to decks.
 
   async function fetchDecks() {
-    /* db.collection("decks")
-      .orderBy("created_at", "desc")
-      .get()
-      .then((snap) => {
-        snap.forEach((deck) => {
-          decks = [...decks, { ...deck.data(), id: deck.id }];
-        });
-        setDeckArray(decks);
-      }); */
-
-    const data = await fetch("/api/deck/readAll", {
+    // Feito
+    const data = await fetch("/api/deck/getDecks", {
       method: "GET",
     });
     data.json().then((deck) => {
@@ -47,35 +36,34 @@ const DeckContextProvider = ({ children }) => {
 
   let cards = [];
 
-  function fetchCards(id) {
-    db.collection("decks")
-      .doc(id)
-      .collection("cards")
-      .get()
-      .then((snap) => {
-        snap.forEach((card) => {
-          cards = [...cards, card.data()];
-        });
+  async function fetchCards(id) {
+    const data = await fetch("/api/deck/getCards", {
+      method: "POST",
+      body: JSON.stringify({ id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-        setCurrentCard(cards[0]);
-        setCardsArray(cards);
-      });
+    data.json().then((deck) => {
+      cards = [...deck[0].cards];
+
+      setCurrentCard(cards[0]);
+      setCardsArray(cards);
+    });
   }
 
   function createCards(id, front, back) {
     Loading(true);
-    db.collection("decks")
-      .doc(id)
-      .collection("cards")
-      .add({
-        front,
-        back,
-        next_review: new Date(),
-        reviewed_time: 0,
-      })
-      .then(() => {
-        Loading(false);
-      });
+    fetch("/api/deck/createCard", {
+      method: "POST",
+      body: JSON.stringify({ id, front, back }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => {
+      Loading(false);
+    });
   }
 
   function deleteDeck(id) {

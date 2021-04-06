@@ -22,7 +22,7 @@ export default function Decks() {
           <Deck
             name={deck.name}
             description={deck.description}
-            deck_id={deck.id}
+            deck_id={deck._id}
             photo_id={deck.photo_id}
             key={uuidv4()}
             activateModal={activateModal}

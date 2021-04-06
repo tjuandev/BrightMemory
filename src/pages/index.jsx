@@ -21,12 +21,12 @@ export default function Home() {
 
   /* useEffect(() => {
     const bob = async () => {
-      const res = await fetch("/api/deck/readAll", {
-        method: "GET",
-      });
-
-      res.json().then((el) => {
-        console.log(el);
+      const res = await fetch("/api/deck/getCards", {
+        method: "POST",
+        body: JSON.stringify({
+          id: "606c788968898210ea6d5617",
+        }),
+        headers: { "Content-Type": "application/json" },
       });
     };
 
