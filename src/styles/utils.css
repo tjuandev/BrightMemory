@@ -1,3 +1,7 @@
+.bg-dark {
+  background: var(--main-dark);
+}
+
 /* Modal Utils */
 
 .modalContainer {

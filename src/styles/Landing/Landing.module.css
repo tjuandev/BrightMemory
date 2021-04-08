@@ -1,0 +1,24 @@
+.landingContainer {
+  min-width: 100vw;
+  min-height: 100vh;
+
+  color: #f4f4f4;
+}
+
+.mainTitle {
+  font-weight: bolder;
+  font-size: 3.75rem;
+}
+
+.main > strong {
+  font-size: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+}
+
+.buttons > button {
+  width: "11.5rem";
+  height: "3.75rem";
+}
