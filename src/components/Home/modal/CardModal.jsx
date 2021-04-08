@@ -29,7 +29,7 @@ export default function CardModal({ name, id }) {
         ) : (
           <>
             <h2>Card de {name}</h2>
-            <button
+            <button // Custom Close Button
               onClick={() => {
                 deactivateModal("CardModal");
                 showAnswer(false);

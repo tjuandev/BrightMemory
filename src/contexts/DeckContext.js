@@ -12,18 +12,18 @@ const DeckContextProvider = ({ children }) => {
   const [isAnswer, setIsAnswer] = useState(false);
   const [isStudyFinished, setIsStudyFinished] = useState(false);
 
-  function fetchUserInfo(name, email, picture) {
-    const data = { name, email, picture };
-
-    setUserInfo(data);
-  }
+  const [userId, setUserId] = useState(null);
 
   let decks = []; // Var global to decks.
 
-  async function fetchDecks() {
+  async function fetchDecks(id) {
     // Feito
     const data = await fetch("/api/deck/get", {
-      method: "GET",
+      method: "POST",
+      body: JSON.stringify({ id: id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
     data.json().then((deck) => {
       deck.forEach(() => {
@@ -113,10 +113,23 @@ const DeckContextProvider = ({ children }) => {
     }
   }
 
+  async function getUserId(email) {
+    const userId = await fetch("/api/auth/getUserId", {
+      method: "POST",
+      body: JSON.stringify({ email: email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    userId.json().then((data) => {
+      setUserId(data);
+    });
+  }
+
   return (
     <DeckContext.Provider
       value={{
-        fetchUserInfo,
         deckArray,
         cardsArray,
         currentCard,
@@ -130,6 +143,8 @@ const DeckContextProvider = ({ children }) => {
         showAnswer,
         nextCard,
         isStudyFinished,
+        getUserId,
+        userId,
       }}
     >
       {children}

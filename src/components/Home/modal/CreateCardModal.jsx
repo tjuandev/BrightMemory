@@ -17,12 +17,7 @@ export default function CreateCardModal({ id }) {
         ) : (
           <>
             <strong>Crie seu Deck</strong>
-            <button
-              onClick={() => deactivateModal("CreateCardModal")}
-              className={styles.closeButton}
-            >
-              X
-            </button>
+            <CloseModal modal="CreateCardModal" />
             <form
               onSubmit={(e) => {
                 e.preventDefault();

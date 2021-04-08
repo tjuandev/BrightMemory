@@ -8,12 +8,12 @@ import styles from "../../styles/Home/Decks.module.css";
 import { ModalContext } from "../../contexts/ModalContext";
 
 export default function Decks() {
-  const { deckArray, fetchDecks } = useContext(DeckContext);
+  const { deckArray, fetchDecks, userId } = useContext(DeckContext);
   const { activateModal } = useContext(ModalContext);
 
-  useEffect(() => {
-    fetchDecks();
-  }, []);
+  if (userId) {
+    fetchDecks(userId);
+  }
 
   return (
     <div className={styles.decksContainer}>
@@ -22,7 +22,6 @@ export default function Decks() {
           <Deck
             name={deck.name}
             description={deck.description}
-            deck_id={deck._id}
             photo_id={deck.photo_id}
             cards={deck.cards}
             key={uuidv4()}

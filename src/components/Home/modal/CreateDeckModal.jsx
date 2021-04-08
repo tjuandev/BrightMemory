@@ -3,9 +3,10 @@ import { DeckContext } from "../../../contexts/DeckContext";
 import { ModalContext } from "../../../contexts/ModalContext";
 
 import styles from "../../../styles/Home/modal/CreateDeckModal.module.css";
+import CloseModal from "./CloseModal";
 
 export default function CreateDeckModal() {
-  const { loading, Loading, fetchDecks } = useContext(DeckContext);
+  const { loading, Loading, fetchDecks, userId } = useContext(DeckContext);
   const { deactivateModal } = useContext(ModalContext);
 
   return (
@@ -16,12 +17,8 @@ export default function CreateDeckModal() {
         ) : (
           <>
             <strong>Crie seu Deck</strong>
-            <button
-              onClick={() => deactivateModal("CreateDeckModal")}
-              className={styles.closeButton}
-            >
-              X
-            </button>
+            <CloseModal modal="CreateDeckModal" />
+
             <form
               onSubmit={async (item) => {
                 item.preventDefault();
@@ -30,6 +27,7 @@ export default function CreateDeckModal() {
                 const deckSchema = {
                   name: item.target.deck_name.value,
                   description: item.target.deck_description.value,
+                  userId,
                   pendent: false,
                   photo_id: 1,
                   cards: [],
@@ -45,21 +43,13 @@ export default function CreateDeckModal() {
                   },
                 })
                   .then(() => {
-                    fetchDecks(); // FIXME Talvez seja um erro ficar dando esse fetchDecks toda vez que criamos um deck
+                    fetchDecks();
                     Loading(false);
                     deactivateModal("CreateDeckModal");
                   })
                   .catch((e) => {
                     console.log(e);
                   });
-
-                /* db.collection("decks")
-                  .add(deckSchema)
-                  .then(() => {
-                    fetchDecks();
-                    Loading(false);
-                    deactivateModal("CreateDeckModal");
-                  }); */
               }}
             >
               <label htmlFor="deck_name">Nome do Deck</label>

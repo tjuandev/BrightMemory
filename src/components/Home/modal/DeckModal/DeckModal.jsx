@@ -1,14 +1,12 @@
 import { useContext } from "react";
 import { DeckContext } from "../../../../contexts/DeckContext";
-import { ModalContext } from "../../../../contexts/ModalContext";
-
 import DeckModalButtons from "./DeckModalButtons";
+import CloseModal from "../CloseModal";
 
 import styles from "../../../../styles/Home/modal/DeckModal.module.css";
 
 export default function CreateDeckModal({ name, description, photo_id, id }) {
   const { loading } = useContext(DeckContext);
-  const { activateModal, deactivateModal } = useContext(ModalContext);
 
   return (
     <div className="modalContainer">
@@ -19,12 +17,7 @@ export default function CreateDeckModal({ name, description, photo_id, id }) {
           <>
             <header className="modalHeader" style={{ marginBottom: "2.5rem" }}>
               <strong>Gerenciar Deck</strong>
-              <button
-                onClick={() => deactivateModal("DeckModal")}
-                className="closeButton"
-              >
-                X
-              </button>
+              <CloseModal modal="DeckModal" />
             </header>
             <div className={styles.deckInfoContainer}>
               <div className={styles.deckInfo}>
