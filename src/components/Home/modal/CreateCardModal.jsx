@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { DeckContext } from "../../../contexts/DeckContext";
-import { ModalContext } from "../../../contexts/ModalContext";
 
 import styles from "../../../styles/Home/modal/CreateCardModal.module.css";
 import ClipLoader from "react-spinners/ClipLoader";
 
+import CloseModal from "./CloseModal";
+import { CardContext } from "../../../contexts/CardContext";
+
 export default function CreateCardModal({ id }) {
-  const { loading, Loading, createCards } = useContext(DeckContext);
-  const { deactivateModal } = useContext(ModalContext);
+  const { loading, Loading, updateInfo } = useContext(DeckContext);
+  const { createCard } = useContext(CardContext);
 
   return (
     <div className={styles.modalContainer}>
@@ -20,8 +22,16 @@ export default function CreateCardModal({ id }) {
             <CloseModal modal="CreateCardModal" />
             <form
               onSubmit={(e) => {
+                Loading(true);
                 e.preventDefault();
-                createCards(id, e.target.front.value, e.target.back.value);
+                createCard(id, e.target.front.value, e.target.back.value).then(
+                  () => {
+                    updateInfo("newCard", id).then(() => {
+                      console.log("oi");
+                      Loading(false);
+                    });
+                  }
+                );
               }}
             >
               <label htmlFor="front">Parte Frontal</label>

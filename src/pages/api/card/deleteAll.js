@@ -3,11 +3,8 @@ import { connectToDatabase } from "../../../util/mongodb";
 export default async (req, res) => {
   const { db } = await connectToDatabase();
 
-  const allDecks = await db
-    .collection("decks")
-    .find({ userId: req.body.id })
-    .toArray();
+  await db.collection("cards").deleteMany({ deckId: req.body.deckId });
 
-  res.json(allDecks);
+  res.status(202);
   res.end();
 };

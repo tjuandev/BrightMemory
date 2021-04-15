@@ -5,7 +5,7 @@ import CloseModal from "../CloseModal";
 
 import styles from "../../../../styles/Home/modal/DeckModal.module.css";
 
-export default function CreateDeckModal({ name, description, photo_id, id }) {
+export default function DeckModal({ name, description, photo_id, deckId }) {
   const { loading } = useContext(DeckContext);
 
   return (
@@ -25,7 +25,7 @@ export default function CreateDeckModal({ name, description, photo_id, id }) {
                   <img src="/react.png" alt="react-icon-deck" />
                   <strong>{name}</strong>
                 </div>
-                <DeckModalButtons id={id} />
+                <DeckModalButtons deckId={deckId} />
               </div>
               <div className={styles.deckStudyInfo}>
                 <ul>

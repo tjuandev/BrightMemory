@@ -10,33 +10,27 @@ export const ModalContextProvider = ({ children }) => {
 
   const [currentDeckActive, setCurrentDeckActive] = useState({});
 
-  function activateModal(modal, name = "", description = "", id = "") {
-    /* if (modal === "CreateDeckModal") {
+  function activateModal(
+    modal,
+    name = "",
+    description = "",
+    id = "",
+    reviewInfo = {}
+  ) {
+    if (modal === "CreateDeckModal") {
       setIsCreateDeckModalOpen(true);
     } else if (modal === "DeckModal") {
       setIsDeckModalOpen(true);
-      setCurrentDeckActive({ name, description, id });
+      setCurrentDeckActive({ name, description, id, reviewInfo }); // FIXME Posso dar um fetch decks só quando eu clicar!
     } else if (modal === "CardModal") {
       setIsCardModalOpen(true);
     } else if (modal === "CreateCardModal") {
       setIsCreateCardModalOpen(true);
-    } */
-
-    switch (modal) {
-      case "CreateDeckModal":
-        setIsCreateDeckModalOpen(true);
-      case "DeckModal":
-        setIsDeckModalOpen(true);
-        setCurrentDeckActive({ name, description, id });
-      case "CardModal":
-        setIsCardModalOpen(true);
-      case "CreateCardModal":
-        setIsCreateCardModalOpen(true);
     }
   }
 
   function deactivateModal(modal) {
-    /* if (modal === "CreateDeckModal") {
+    if (modal === "CreateDeckModal") {
       setIsCreateDeckModalOpen(false);
     } else if (modal === "DeckModal") {
       setIsDeckModalOpen(false);
@@ -44,17 +38,6 @@ export const ModalContextProvider = ({ children }) => {
       setIsCardModalOpen(false);
     } else if (modal === "CreateCardModal") {
       setIsCreateCardModalOpen(false);
-    } */
-
-    switch (modal) {
-      case "CreateDeckModal":
-        setIsCreateDeckModalOpen(false);
-      case "DeckModal":
-        setIsDeckModalOpen(false);
-      case "CardModal":
-        setIsCardModalOpen(false);
-      case "CreateCardModal":
-        setIsCreateCardModalOpen(false);
     }
   }
 

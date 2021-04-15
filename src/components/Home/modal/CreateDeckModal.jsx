@@ -6,7 +6,9 @@ import styles from "../../../styles/Home/modal/CreateDeckModal.module.css";
 import CloseModal from "./CloseModal";
 
 export default function CreateDeckModal() {
-  const { loading, Loading, fetchDecks, userId } = useContext(DeckContext);
+  const { loading, Loading, fetchDecks, userId, createDeck } = useContext(
+    DeckContext
+  );
   const { deactivateModal } = useContext(ModalContext);
 
   return (
@@ -30,26 +32,21 @@ export default function CreateDeckModal() {
                   userId,
                   pendent: false,
                   photo_id: 1,
-                  cards: [],
+                  review_info: {
+                    repeat_cards: 0,
+                    new_cards: 0,
+                    cards_to_study_today: 0,
+                  },
+                  all_cards: 0,
                   cards_number: 0,
                   created_at: new Date().getTime(),
                 };
 
-                await fetch("/api/deck/create", {
-                  method: "POST",
-                  body: JSON.stringify(deckSchema),
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                })
-                  .then(() => {
-                    fetchDecks();
-                    Loading(false);
-                    deactivateModal("CreateDeckModal");
-                  })
-                  .catch((e) => {
-                    console.log(e);
-                  });
+                createDeck(deckSchema).then(() => {
+                  fetchDecks(userId);
+                  Loading(false);
+                  deactivateModal("CreateDeckModal");
+                });
               }}
             >
               <label htmlFor="deck_name">Nome do Deck</label>
@@ -65,7 +62,6 @@ export default function CreateDeckModal() {
                 id="deck_description"
                 cols="30"
                 rows="10"
-                maxLength="255"
                 placeholder="Digite sua descrição aqui."
                 required
               ></textarea>

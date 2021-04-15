@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ModalContext } from "../contexts/ModalContext";
 import styles from "../styles/Home/index.module.css";
 
@@ -6,7 +6,7 @@ import Decks from "../components/Home/Decks";
 import CreateDeckModal from "../components/Home/modal/CreateDeckModal";
 import CreateCardModal from "../components/Home/modal/CreateCardModal";
 import DeckModal from "../components/Home/modal/DeckModal/DeckModal";
-import CardModal from "../components/Home/modal/CardModal.jsx";
+import CardModal from "../components/Home/modal/CardModal/CardModal.jsx";
 import User from "../components/Home/User";
 import CreateButton from "../components/Home/CreateButton";
 
@@ -48,7 +48,7 @@ export default function Home() {
           <DeckModal
             name={currentDeckActive.name}
             description={currentDeckActive.description}
-            id={currentDeckActive.id}
+            deckId={currentDeckActive.id}
           />
         </div>
       ) : (
@@ -56,7 +56,10 @@ export default function Home() {
       )}
 
       {isCardModalOpen ? (
-        <CardModal name={currentDeckActive.name} id={currentDeckActive.id} />
+        <CardModal
+          name={currentDeckActive.name}
+          deckId={currentDeckActive.id}
+        />
       ) : (
         ""
       )}

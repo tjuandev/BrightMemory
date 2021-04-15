@@ -11,9 +11,11 @@ export default function Decks() {
   const { deckArray, fetchDecks, userId } = useContext(DeckContext);
   const { activateModal } = useContext(ModalContext);
 
-  if (userId) {
-    fetchDecks(userId);
-  }
+  useEffect(() => {
+    if (userId) {
+      fetchDecks(userId);
+    }
+  }, [userId]);
 
   return (
     <div className={styles.decksContainer}>
@@ -24,8 +26,13 @@ export default function Decks() {
             description={deck.description}
             photo_id={deck.photo_id}
             cards={deck.cards}
+            deck_id={deck._id}
             key={uuidv4()}
             activateModal={activateModal}
+            reviewInfo={{
+              newCards: deck.review_info.newCards,
+              all_cards: deck.all_cards,
+            }}
           />
         );
       })}

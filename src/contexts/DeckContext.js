@@ -6,12 +6,6 @@ const DeckContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [deckArray, setDeckArray] = useState([]);
 
-  const [cardsArray, setCardsArray] = useState([]);
-  const [currentCard, setCurrentCard] = useState({ front: "", back: "" });
-
-  const [isAnswer, setIsAnswer] = useState(false);
-  const [isStudyFinished, setIsStudyFinished] = useState(false);
-
   const [userId, setUserId] = useState(null);
 
   let decks = []; // Var global to decks.
@@ -34,36 +28,23 @@ const DeckContextProvider = ({ children }) => {
     });
   }
 
-  let cards = [];
-
-  async function fetchCards(id) {
-    Loading(true);
-    const data = await fetch("/api/card/get", {
+  async function createDeck(schema) {
+    return await fetch("/api/deck/create", {
       method: "POST",
-      body: JSON.stringify({ id }),
+      body: JSON.stringify(schema),
       headers: {
         "Content-Type": "application/json",
       },
-    });
-
-    data.json().then((deck) => {
-      cards = [...deck[0].cards];
-      setCurrentCard(cards[0]);
-      setCardsArray(cards);
-      Loading(false);
     });
   }
 
-  function createCards(id, front, back) {
-    Loading(true);
-    fetch("/api/card/create", {
+  async function updateInfo(action, deckId) {
+    return await fetch("api/deck/updateInfo", {
       method: "POST",
-      body: JSON.stringify({ id, front, back }),
+      body: JSON.stringify({ action: action, deckId: deckId }),
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(() => {
-      Loading(false);
     });
   }
 
@@ -91,28 +72,6 @@ const DeckContextProvider = ({ children }) => {
     setLoading(active || false);
   }
 
-  function showAnswer(active) {
-    setIsAnswer(active || false);
-  }
-
-  function nextCard() {
-    let newCardArray = cardsArray.filter((card) => {
-      if (currentCard === card) {
-        return false;
-      }
-      return true;
-    });
-
-    showAnswer(false);
-
-    if (cardsArray.length > 1) {
-      setCardsArray(newCardArray);
-      setCurrentCard(newCardArray[0]);
-    } else {
-      setIsStudyFinished(true);
-    }
-  }
-
   async function getUserId(email) {
     const userId = await fetch("/api/auth/getUserId", {
       method: "POST",
@@ -131,18 +90,12 @@ const DeckContextProvider = ({ children }) => {
     <DeckContext.Provider
       value={{
         deckArray,
-        cardsArray,
-        currentCard,
         fetchDecks,
-        fetchCards,
-        createCards,
+        createDeck,
         deleteDeck,
+        updateInfo,
         loading,
         Loading,
-        isAnswer,
-        showAnswer,
-        nextCard,
-        isStudyFinished,
         getUserId,
         userId,
       }}

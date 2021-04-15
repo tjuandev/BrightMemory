@@ -1,24 +1,27 @@
 import { useContext, useEffect } from "react";
-import { DeckContext } from "../../../contexts/DeckContext";
-import { ModalContext } from "../../../contexts/ModalContext";
+import { CardContext } from "../../../../contexts/CardContext";
+import { DeckContext } from "../../../../contexts/DeckContext";
+import { ModalContext } from "../../../../contexts/ModalContext";
 
-import styles from "../../../styles/Home/modal/CardModal.module.css";
+import CardModalButton from "./CardModalButton";
 
-export default function CardModal({ name, id }) {
+import styles from "../../../../styles/Home/modal/CardModal.module.css";
+
+export default function CardModal({ name, deckId }) {
   const {
-    loading,
     fetchCards,
-    cardsArray,
     currentCard,
     showAnswer,
-    isAnswer,
-    nextCard,
+    isAnswerShowing,
     isStudyFinished,
-  } = useContext(DeckContext);
+    repeatedCardsArray,
+  } = useContext(CardContext);
+
+  const { loading } = useContext(DeckContext);
   const { deactivateModal } = useContext(ModalContext);
 
   useEffect(() => {
-    fetchCards(id);
+    fetchCards(deckId);
   }, []);
 
   return (
@@ -34,7 +37,7 @@ export default function CardModal({ name, id }) {
                 deactivateModal("CardModal");
                 showAnswer(false);
               }}
-              className={styles.closeButton}
+              className="closeButton"
             >
               X
             </button>
@@ -48,7 +51,7 @@ export default function CardModal({ name, id }) {
                     <strong>{currentCard.front || ""}</strong>
                   </div>
 
-                  {isAnswer ? (
+                  {isAnswerShowing ? (
                     <>
                       <hr />
                       <div className={styles.backCard}>
@@ -59,14 +62,8 @@ export default function CardModal({ name, id }) {
                     ""
                   )}
 
-                  {isAnswer ? (
-                    <>
-                      <div style={{ margin: "2rem" }}>
-                        <button>Difícil</button>
-                        <button>Médio</button>
-                        <button onClick={nextCard}>Fácil</button>
-                      </div>
-                    </>
+                  {isAnswerShowing ? (
+                    <CardModalButton />
                   ) : (
                     <button onClick={() => showAnswer(true)}>
                       Mostrar Resposta

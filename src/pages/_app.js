@@ -1,5 +1,6 @@
 import { DeckContextProvider } from "../contexts/DeckContext";
 import { ModalContextProvider } from "../contexts/ModalContext";
+import { CardContextProvider } from "../contexts/CardContext";
 import "../styles/globals.css";
 import "../styles/utils.css";
 
@@ -10,7 +11,9 @@ function MyApp({ Component, pageProps }) {
     <Provider session={pageProps.session}>
       <DeckContextProvider>
         <ModalContextProvider>
-          <Component {...pageProps} />
+          <CardContextProvider>
+            <Component {...pageProps} />
+          </CardContextProvider>
         </ModalContextProvider>
       </DeckContextProvider>
     </Provider>

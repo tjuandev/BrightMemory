@@ -1,13 +1,21 @@
-import { ObjectId } from "bson";
 import { connectToDatabase } from "../../../util/mongodb";
+import { isSameDay, parseISO } from "date-fns";
 
 export default async (req, res) => {
   const { db } = await connectToDatabase();
 
-  let deckId = new ObjectId(req.body.id);
+  const cards = await db
+    .collection("cards")
+    .find({ deckId: req.body.deckId })
+    .toArray();
 
-  const deck = await db.collection("decks").find({ _id: deckId }).toArray();
+  const today = new Date();
 
-  res.json(deck);
+  const cardsToReview = cards.filter((card) => {
+    return isSameDay(card.reviewWhen, today);
+  });
+
+  res.json(cardsToReview);
+  res.status(200);
   res.end();
 };
