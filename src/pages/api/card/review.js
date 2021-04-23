@@ -11,9 +11,41 @@ export default async (req, res) => {
     days: req.body.daysToReview,
   });
 
-  await db
-    .collection("cards")
-    .updateOne({ _id: cardId }, { $set: { reviewWhen: addDaysToReview } });
+  if (!req.body.repeat && !req.body.isNotToRepeat) {
+    await db.collection("cards").updateOne(
+      { _id: cardId },
+      {
+        $set: { reviewWhen: addDaysToReview, isNew: false },
+        $inc: { reviewTime: 1 },
+      }
+    );
+  } else if (!req.body.repeat && req.body.isNotToRepeat) {
+    await db.collection("cards").updateOne(
+      { _id: cardId },
+      {
+        $set: {
+          reviewWhen: addDaysToReview,
+          isNew: false,
+          isRepeat: false,
+        },
+        $inc: {
+          reviewTime: 1,
+        },
+      }
+    );
+  } else {
+    await db.collection("cards").updateOne(
+      { _id: cardId },
+      {
+        $set: {
+          reviewWhen: addDaysToReview,
+          isNew: false,
+          reviewTime: 2,
+          isRepeat: true,
+        },
+      }
+    );
+  }
 
   res.status(204);
   res.end();

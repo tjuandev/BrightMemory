@@ -35,7 +35,7 @@ export default function CreateDeckModal() {
                   review_info: {
                     repeat_cards: 0,
                     new_cards: 0,
-                    cards_to_study_today: 0,
+                    cards_today: 0,
                   },
                   all_cards: 0,
                   cards_number: 0,

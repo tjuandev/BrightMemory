@@ -8,14 +8,16 @@ import CloseModal from "./CloseModal";
 import { CardContext } from "../../../contexts/CardContext";
 
 export default function CreateCardModal({ id }) {
-  const { loading, Loading, updateInfo } = useContext(DeckContext);
+  const { loading, Loading, updateInfo, fetchDecks, userId } = useContext(
+    DeckContext
+  );
   const { createCard } = useContext(CardContext);
 
   return (
     <div className={styles.modalContainer}>
       <div>
         {loading ? (
-          <ClipLoader color="#000" loading={true} size={50} />
+          <ClipLoader color="rgba(0, 0, 0, 0.4)" loading={true} size={50} />
         ) : (
           <>
             <strong>Crie seu Deck</strong>
@@ -27,8 +29,9 @@ export default function CreateCardModal({ id }) {
                 createCard(id, e.target.front.value, e.target.back.value).then(
                   () => {
                     updateInfo("newCard", id).then(() => {
-                      console.log("oi");
-                      Loading(false);
+                      fetchDecks(userId).then(() => {
+                        Loading(false);
+                      });
                     });
                   }
                 );

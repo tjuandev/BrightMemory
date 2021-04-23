@@ -1,24 +1,245 @@
 .landingContainer {
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
 
+  background: #f4f4f4;
+  overflow-x: hidden;
+}
+
+.elementsContainer {
+  margin: 0 6rem;
+  height: 100vh;
+
+  padding-top: 3rem;
+}
+
+.headerNavigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.headerNavigation > img {
+  width: 14.25rem;
+  height: 2.25rem;
+}
+
+.headerNavigation > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  font-size: 1rem;
+}
+
+.headerNavigation > div > a {
+  text-decoration: none;
+  color: #4d4d4d;
+  font-size: 0.75rem;
+}
+
+.headerNavigation > div > button {
+  width: 5rem;
+  height: 2.25rem;
+  color: #f4f4f4;
+  font-size: 0.75rem;
+
+  border: none;
+  border-radius: 6px;
+  background: var(--gradient-blue);
+
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.headerNavigation > div > button:hover {
+  opacity: 0.7;
+}
+
+.mainContent {
+  display: flex;
+  width: 100%;
+}
+
+.textContent {
+  margin-top: 8rem;
+}
+
+.textContent > h1 {
+  font-size: 4.09rem;
+  line-height: 4rem;
+
+  font-weight: 600;
+
+  margin-bottom: 1.5rem;
+}
+
+.textContent > p {
+  font-size: 1rem;
+  width: 78%;
+  margin-bottom: 2rem;
+}
+
+.textContent > button {
+  width: 8.5rem;
+  height: 2.5rem;
+
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+.startNowButton {
+  color: #f4f4f4;
+  background: linear-gradient(
+    97.51deg,
+    #ff3900 7.88%,
+    rgba(255, 255, 255, 0) 280.05%
+  );
+  margin-right: 1rem;
+
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.startNowButton:hover {
+  opacity: 0.7;
+}
+
+.learnMoreButton {
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.learnMoreButton:hover {
+  background: #4d4d4d;
   color: #f4f4f4;
 }
 
-.mainTitle {
-  font-weight: bolder;
-  font-size: 3.75rem;
+.illustration {
+  width: 32rem;
+  margin-top: 3rem;
 }
 
-.main > strong {
-  font-size: 1.5rem;
+/* Mobile - General */
+
+@media (max-width: 900px) {
+  .elementsContainer {
+    margin: 0rem 1rem;
+    height: 100vh;
+
+    padding-top: 1.5rem;
+  }
+
+  .mainContent {
+    flex-direction: column-reverse;
+  }
+
+  .textContent {
+    margin-top: 1rem;
+  }
+
+  .textContent > h1 {
+    font-size: 3.4rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .textContent > p {
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .illustration {
+    margin-left: auto;
+    margin-right: auto;
+    width: 22rem;
+  }
+
+  .textContent > button {
+    height: 2.8rem;
+    font-size: 0.8rem;
+  }
+
+  .headerNavigation > img {
+    width: 12.25rem;
+    height: 2.25rem;
+  }
 }
 
-.buttons {
-  display: flex;
+/* Iphone X */
+
+@media (max-width: 375px) {
+  .illustration {
+    margin-top: 2rem;
+    width: 24rem;
+  }
+
+  .textContent > h1 {
+    font-size: 3.2rem;
+  }
 }
 
-.buttons > button {
-  width: "11.5rem";
-  height: "3.75rem";
+/* Mobile - Deitado */
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .landingContainer {
+    overflow-y: scroll;
+  }
+
+  .textContent > button {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 1079px) and (min-height: 900px) {
+  .mainContent {
+    flex-direction: column-reverse;
+  }
+
+  .textContent > h1 {
+    font-size: 6rem;
+    margin-bottom: 1.5rem;
+    line-height: 6rem;
+  }
+
+  .textContent > p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .textContent > button {
+    font-size: 1.25rem;
+    width: 13rem;
+    height: 4rem;
+  }
+
+  .elementsContainer {
+    margin: 0 2rem;
+    height: 100vh;
+
+    padding-top: 3rem;
+  }
+
+  .illustration {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30rem;
+  }
+}
+
+/* Desktop */
+
+@media (min-height: 720px) and (min-width: 1080px) {
+  .textContent {
+    margin-top: 13.5rem;
+  }
+
+  .illustration {
+    width: 33rem;
+    margin-top: 7rem;
+  }
 }

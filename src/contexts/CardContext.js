@@ -20,11 +20,23 @@ export const CardContextProvider = ({ children }) => {
       },
     });
 
-    data.json().then((card) => {
-      cards = [...card];
+    data.json().then((cardFetchArray) => {
+      cards = [...cardFetchArray];
       setCurrentCard(cards[0]);
       setCardsArray([...cards]);
     });
+  }
+
+  async function cardsToStudy(deckId) {
+    const data = await fetch("/api/card/getReviewToday", {
+      method: "POST",
+      body: JSON.stringify({ deckId }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return await data.json();
   }
 
   async function createCard(deckId, front, back) {
@@ -39,6 +51,7 @@ export const CardContextProvider = ({ children }) => {
         reviewWhen: today,
         reviewTime: 2,
         isNew: true,
+        isRepeat: false,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +71,7 @@ export const CardContextProvider = ({ children }) => {
     });
   }
 
-  async function updateReview(degree) {
+  async function updateReview(degree, repeat = false, isNotToRepeat = false) {
     const daysToReview = (currentCard.reviewTime - 1) * degree;
 
     return await fetch("/api/card/review", {
@@ -66,6 +79,8 @@ export const CardContextProvider = ({ children }) => {
       body: JSON.stringify({
         currentCard,
         daysToReview,
+        repeat,
+        isNotToRepeat,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +92,7 @@ export const CardContextProvider = ({ children }) => {
     setIsAnswerShowing(active || false);
   }
 
-  function nextCard(repeat) {
+  function nextCard(repeat = false) {
     if (repeat) {
       setRepeatedCardsArray([...repeatedCardsArray, currentCard]);
     }
@@ -112,6 +127,7 @@ export const CardContextProvider = ({ children }) => {
         showAnswer,
         updateReview,
         nextCard,
+        cardsToStudy,
         isAnswerShowing,
         currentCard,
         cardsArray,

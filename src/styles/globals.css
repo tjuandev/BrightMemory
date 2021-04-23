@@ -5,13 +5,34 @@
   --green: #5bcf00;
   --blue: #1e78ff;
   --red: #eb5757;
+  --gradient-blue: linear-gradient(
+    97.51deg,
+    #00409f 7.88%,
+    rgba(255, 255, 255, 0) 280.05%
+  );
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Fira Code";
+  font-family: "Poppins";
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+button {
+  cursor: pointer;
 }
 
 #__next {

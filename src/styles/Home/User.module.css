@@ -3,9 +3,13 @@
   align-items: center;
 }
 
+.userTextInfo > strong {
+  font-weight: 600;
+}
+
 .userInfo img {
-  width: 4.75rem;
-  height: 4.75rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
-  margin-right: 0.75rem;
+  margin-right: 0.95rem;
 }

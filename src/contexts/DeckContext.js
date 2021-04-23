@@ -19,13 +19,15 @@ const DeckContextProvider = ({ children }) => {
         "Content-Type": "application/json",
       },
     });
-    data.json().then((deck) => {
-      deck.forEach(() => {
-        decks = [...deck];
-      });
+    const deck = await data.json();
 
-      setDeckArray(decks);
+    deck.forEach(() => {
+      decks = [...deck];
     });
+
+    setDeckArray(decks);
+
+    return deck;
   }
 
   async function createDeck(schema) {
@@ -38,14 +40,20 @@ const DeckContextProvider = ({ children }) => {
     });
   }
 
-  async function updateInfo(action, deckId) {
-    return await fetch("api/deck/updateInfo", {
+  async function updateInfo(action, deckId, cardsToStudyLength = 0) {
+    await fetch("api/deck/updateInfo", {
       method: "POST",
-      body: JSON.stringify({ action: action, deckId: deckId }),
+      body: JSON.stringify({
+        action,
+        deckId,
+        cardsToStudyLength,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
     });
+
+    await fetchDecks(userId);
   }
 
   async function deleteDeck(id) {

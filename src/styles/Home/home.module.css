@@ -1,0 +1,52 @@
+.homeContainer {
+  width: 100vw;
+  min-height: 100vh;
+
+  display: flex;
+  background: #f4f4f4;
+
+  overflow: hidden;
+}
+
+.asideContainer {
+  height: 100vh;
+  width: 4.5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(
+      180deg,
+      #00409f -3.72%,
+      rgba(255, 255, 255, 0) 118%
+    ),
+    #1e78ff;
+}
+
+.asideContainer > img {
+  width: 1.5rem;
+}
+
+.logo {
+  margin-top: 2rem;
+}
+
+.signOut {
+  margin-bottom: 2rem;
+}
+
+.mainContent {
+  margin: 2rem 4rem;
+  width: 100%;
+}
+
+.mainContent > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  margin-bottom: 3.5rem;
+}

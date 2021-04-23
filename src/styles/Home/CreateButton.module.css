@@ -1,6 +1,6 @@
 .createButton {
   color: var(--white);
-  background: var(--green);
+  background: var(--gradient-blue);
   border: none;
   border-radius: 50%;
   width: 3.625rem;

@@ -6,7 +6,7 @@ export default async (req, res) => {
 
   const cards = await db
     .collection("cards")
-    .find({ deckId: req.body.deckId })
+    .find({ deckId: req.body.deckId, isNew: false, isRepeat: false })
     .toArray();
 
   const today = new Date();

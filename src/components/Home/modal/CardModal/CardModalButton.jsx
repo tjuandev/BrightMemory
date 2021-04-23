@@ -1,19 +1,24 @@
 import { useContext } from "react";
 import { CardContext } from "../../../../contexts/CardContext";
+import { DeckContext } from "../../../../contexts/DeckContext";
 
 export default function Buttons() {
-  const { updateReview, nextCard, repeatedCardsArray } = useContext(
-    CardContext
-  );
+  const { updateReview, nextCard, currentCard } = useContext(CardContext);
+
+  const { updateInfo } = useContext(DeckContext);
 
   return (
     <>
       <div style={{ margin: "2rem" }}>
         <button
           onClick={() => {
-            updateReview(0).then(() => {
-              nextCard(true);
-              console.log(repeatedCardsArray);
+            if (currentCard.isNew)
+              updateInfo("newCardReviewed", currentCard.deckId);
+            updateReview(0, true).then(() => {
+              nextCard();
+              if (!currentCard.isRepeat) {
+                updateInfo("repeatReview", currentCard.deckId);
+              }
             });
           }}
         >
@@ -22,8 +27,20 @@ export default function Buttons() {
         </button>
         <button
           onClick={() => {
-            updateReview(3).then(() => {
+            let isToNotRepeat = false;
+
+            if (currentCard.isNew) {
+              updateInfo("newCardReviewed", currentCard.deckId);
+            }
+
+            if (currentCard.isRepeat) {
+              isToNotRepeat = true;
+            }
+            updateReview(3, false, isToNotRepeat).then(() => {
               nextCard();
+              if (currentCard.isRepeat) {
+                updateInfo("cardRepeatReviewed", currentCard.deckId);
+              }
             });
           }}
         >
@@ -33,8 +50,20 @@ export default function Buttons() {
         </button>
         <button
           onClick={() => {
-            updateReview(5).then(() => {
+            let isToNotRepeat = false;
+
+            if (currentCard.isNew) {
+              updateInfo("newCardReviewed", currentCard.deckId);
+            }
+
+            if (currentCard.isRepeat) {
+              isToNotRepeat = true;
+            }
+            updateReview(5, false, isToNotRepeat).then(() => {
               nextCard();
+              if (currentCard.isRepeat) {
+                updateInfo("cardRepeatReviewed", currentCard.deckId);
+              }
             });
           }}
         >
@@ -44,8 +73,20 @@ export default function Buttons() {
         </button>
         <button
           onClick={() => {
-            updateReview(7).then(() => {
+            let isToNotRepeat = false;
+
+            if (currentCard.isNew) {
+              updateInfo("newCardReviewed", currentCard.deckId);
+            }
+
+            if (currentCard.isRepeat) {
+              isToNotRepeat = true;
+            }
+            updateReview(7, false, isToNotRepeat).then(() => {
               nextCard();
+              if (currentCard.isRepeat) {
+                updateInfo("cardRepeatReviewed", currentCard.deckId);
+              }
             });
           }}
         >

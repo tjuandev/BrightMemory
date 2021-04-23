@@ -6,14 +6,24 @@ import { DeckContext } from "../../contexts/DeckContext";
 
 import styles from "../../styles/Home/Decks.module.css";
 import { ModalContext } from "../../contexts/ModalContext";
+import { CardContext } from "../../contexts/CardContext";
 
 export default function Decks() {
-  const { deckArray, fetchDecks, userId } = useContext(DeckContext);
+  const { deckArray, fetchDecks, userId, updateInfo } = useContext(DeckContext);
+  const { cardsToStudy } = useContext(CardContext);
   const { activateModal } = useContext(ModalContext);
 
   useEffect(() => {
     if (userId) {
-      fetchDecks(userId);
+      fetchDecks(userId).then((decks) => {
+        if (decks.length > 0) {
+          decks.forEach((deck) => {
+            cardsToStudy(deck._id).then((cardsToStudy) => {
+              updateInfo("reviewsToday", deck._id, cardsToStudy.length);
+            });
+          });
+        }
+      });
     }
   }, [userId]);
 
@@ -26,12 +36,14 @@ export default function Decks() {
             description={deck.description}
             photo_id={deck.photo_id}
             cards={deck.cards}
-            deck_id={deck._id}
+            deckId={deck._id}
             key={uuidv4()}
             activateModal={activateModal}
             reviewInfo={{
-              newCards: deck.review_info.newCards,
-              all_cards: deck.all_cards,
+              cardsToRepeat: deck.review_info.repeat_cards,
+              cardsToday: deck.review_info.cards_today,
+              newCards: deck.review_info.new_cards,
+              allCards: deck.all_cards,
             }}
           />
         );

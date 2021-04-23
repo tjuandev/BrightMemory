@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { ModalContext } from "../contexts/ModalContext";
-import styles from "../styles/Home/index.module.css";
 
 import Decks from "../components/Home/Decks";
 import CreateDeckModal from "../components/Home/modal/CreateDeckModal";
@@ -12,6 +11,8 @@ import CreateButton from "../components/Home/CreateButton";
 
 import { getSession } from "next-auth/client";
 
+import styles from "../styles/Home/home.module.css";
+
 export default function Home() {
   const {
     isCreateDeckModalOpen,
@@ -22,13 +23,19 @@ export default function Home() {
   } = useContext(ModalContext);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.homeContainer}>
+    <div className={styles.homeContainer}>
+      <aside className={styles.asideContainer}>
+        <img src="logo-home.svg" alt="Logo to Home" className={styles.logo} />
+        <img
+          src="getout.svg"
+          alt="Sign Out Button"
+          className={styles.signOut}
+        />
+      </aside>
+      <div className={styles.mainContent}>
         <header>
-          <nav className={styles.navbar}>
-            <User />
-            <CreateButton />
-          </nav>
+          <User />
+          <CreateButton />
         </header>
         <main>
           <Decks />
@@ -36,7 +43,7 @@ export default function Home() {
       </div>
 
       {isCreateDeckModalOpen ? (
-        <div className={styles.modalBg}>
+        <div>
           <CreateDeckModal />
         </div>
       ) : (
@@ -44,11 +51,12 @@ export default function Home() {
       )}
 
       {isDeckModalOpen ? (
-        <div className={styles.modalBg}>
+        <div>
           <DeckModal
             name={currentDeckActive.name}
             description={currentDeckActive.description}
             deckId={currentDeckActive.id}
+            reviewInfo={currentDeckActive.reviewInfo}
           />
         </div>
       ) : (
@@ -65,7 +73,7 @@ export default function Home() {
       )}
 
       {isCreateCardModalOpen ? (
-        <div className={styles.modalBg}>
+        <div>
           <CreateCardModal id={currentDeckActive.id} />
         </div>
       ) : (
@@ -76,7 +84,6 @@ export default function Home() {
 }
 
 export async function getServerSideProps(ctx) {
-  // NOTE Estudar bem essa parte!!!
   const session = await getSession(ctx);
 
   if (!session) {

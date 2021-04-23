@@ -22,11 +22,10 @@ export default function User() {
       ) : (
         <div className={styles.userInfo}>
           <img src={session[0].user.image} alt="thiago-user" />
-          <div>
+          <div className={styles.userTextInfo}>
             <strong>{session[0].user.name}</strong>
-            <p>16 Decks</p>
+            <p>Decks</p>
           </div>
-          <button onClick={signOut}>sign out!</button>
         </div>
       )}
     </>

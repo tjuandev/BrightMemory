@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DeckContext } from "../../../../contexts/DeckContext";
 import DeckModalButtons from "./DeckModalButtons";
 import CloseModal from "../CloseModal";
 
 import styles from "../../../../styles/Home/modal/DeckModal.module.css";
+import { CardContext } from "../../../../contexts/CardContext";
 
-export default function DeckModal({ name, description, photo_id, deckId }) {
+export default function DeckModal({ name, description, deckId, reviewInfo }) {
   const { loading } = useContext(DeckContext);
 
   return (
@@ -29,27 +30,27 @@ export default function DeckModal({ name, description, photo_id, deckId }) {
               </div>
               <div className={styles.deckStudyInfo}>
                 <ul>
-                  <li>
+                  {/* <li>
                     <strong style={{ color: "var(--red)" }}>
                       Revisão Crítica:
                     </strong>{" "}
-                    5
-                  </li>
+                    {reviewInfo.cardsToRepeat}
+                  </li> NOTE Future Update*/}
                   <li>
                     <strong style={{ color: "var(--green)" }}>
                       Revisão Atual:
                     </strong>{" "}
-                    10
+                    {reviewInfo.cardsToday}
                   </li>
                   <li>
                     <strong style={{ color: "var(--blue)" }}>
                       Novos Cards:
                     </strong>{" "}
-                    3
+                    {reviewInfo.newCards}
                   </li>
                   <li>
                     <strong>Total de Cards: </strong>
-                    42
+                    {reviewInfo.allCards}
                   </li>
                 </ul>
 
