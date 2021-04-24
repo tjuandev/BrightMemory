@@ -9,3 +9,7 @@
 
   cursor: pointer;
 }
+
+.createButton:focus {
+  outline: none;
+}

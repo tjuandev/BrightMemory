@@ -30,10 +30,26 @@ const DeckContextProvider = ({ children }) => {
     return deck;
   }
 
-  async function createDeck(schema) {
+  async function createDeck(item) {
+    const deckSchema = {
+      name: item.target.deck_name.value,
+      description: item.target.deck_description.value,
+      userId,
+      pendent: false,
+      photo_id: 1,
+      review_info: {
+        repeat_cards: 0,
+        new_cards: 0,
+        cards_today: 0,
+      },
+      all_cards: 0,
+      cards_number: 0,
+      created_at: new Date().getTime(),
+    };
+
     return await fetch("/api/deck/create", {
       method: "POST",
-      body: JSON.stringify(schema),
+      body: JSON.stringify(deckSchema),
       headers: {
         "Content-Type": "application/json",
       },

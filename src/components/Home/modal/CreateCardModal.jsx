@@ -43,10 +43,20 @@ export default function CreateCardModal({ id }) {
               }}
             >
               <label htmlFor="front">Parte Frontal</label>
-              <textarea type="text" name="front" required />
+              <textarea
+                type="text"
+                name="front"
+                required
+                placeholder="Digite aqui a parte frontal do seu card (perguntas, novas palavras...)."
+              />
               <br />
               <label htmlFor="back">Parte Posterior</label>
-              <textarea type="text" name="back" required />
+              <textarea
+                type="text"
+                name="back"
+                required
+                placeholder="Digite aqui a parte posterior (respostas, traduções...)."
+              />
               <br />
               <button type="submit" className={styles.button}>
                 Feito

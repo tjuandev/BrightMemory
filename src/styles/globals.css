@@ -4,7 +4,10 @@
   --white: #f4f4f4;
   --green: #2cc84d;
   --blue: #1e78ff;
-  --red: #eb5757;
+  --red: #e73c3e;
+  --pink: #ff75e9;
+  --yellow: #ffd028;
+  --purple: #6c63ff;
   --gradient-blue: linear-gradient(
     97.51deg,
     #00409f 7.88%,
@@ -92,6 +95,10 @@ button {
   cursor: pointer;
 }
 
+.closeButton:focus {
+  outline: none;
+}
+
 /* Buttons Utils */
 
 .button-green {
@@ -156,4 +163,30 @@ button {
 .deck strong {
   margin-top: 1.7rem;
   font-weight: 400;
+}
+
+/* Deck Background */
+
+.bgWhite {
+  background: #ffffff;
+}
+
+.bgPink {
+  background: var(--pink);
+}
+
+.bgPurple {
+  background: var(--purple);
+}
+
+.bgGreen {
+  background: var(--green);
+}
+
+.bgRed {
+  background: var(--red);
+}
+
+.bgYellow {
+  background: var(--yellow);
 }

@@ -13,7 +13,10 @@
   height: 8rem;
 
   border-radius: 0.5rem;
+  padding: 0.5rem;
+  resize: none;
 }
+
 .button {
   border: none;
   background: var(--green);
