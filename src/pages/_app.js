@@ -2,7 +2,6 @@ import { DeckContextProvider } from "../contexts/DeckContext";
 import { ModalContextProvider } from "../contexts/ModalContext";
 import { CardContextProvider } from "../contexts/CardContext";
 import "../styles/globals.css";
-import "../styles/utils.css";
 
 import { Provider } from "next-auth/client";
 

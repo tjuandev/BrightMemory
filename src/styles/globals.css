@@ -2,7 +2,7 @@
   --bg-light: #dcdcdc;
   --main-dark: #070a13;
   --white: #f4f4f4;
-  --green: #5bcf00;
+  --green: #2cc84d;
   --blue: #1e78ff;
   --red: #eb5757;
   --gradient-blue: linear-gradient(
@@ -37,4 +37,123 @@ button {
 
 #__next {
   overflow: hidden;
+}
+
+.bg-dark {
+  background: var(--main-dark);
+}
+
+.LoadingContainer {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.LoadingContainer > p {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Utils */
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.modalHeader > strong {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.modalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.closeButton {
+  background: var(--red);
+  border: none;
+  color: var(--white);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-weight: bolder;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Buttons Utils */
+
+.button-green {
+  background: var(--green);
+  color: var(--white);
+}
+
+.button-blue {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.button-red {
+  background: var(--red);
+  color: var(--white);
+}
+
+.bg-blur {
+  min-width: 100vw;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: rgba(29, 29, 29, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+/* Deck */
+.deck {
+  background: #fff;
+  height: 14.5rem;
+  width: 11rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.deck > button {
+  position: absolute;
+  top: 1rem;
+  left: 1.1rem;
+  background: var(--red);
+  border-radius: 50%;
+
+  width: 1.55rem;
+  height: 1.55rem;
+
+  text-align: center;
+  color: #f4f4f4;
+  font-size: 0.8rem;
+
+  border: none;
+}
+
+.deck img {
+  margin-top: 3.25rem;
+}
+
+.deck strong {
+  margin-top: 1.7rem;
+  font-weight: 400;
 }

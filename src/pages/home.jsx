@@ -43,7 +43,7 @@ export default function Home() {
       </div>
 
       {isCreateDeckModalOpen ? (
-        <div>
+        <div className="bg-blur">
           <CreateDeckModal />
         </div>
       ) : (
@@ -51,7 +51,7 @@ export default function Home() {
       )}
 
       {isDeckModalOpen ? (
-        <div>
+        <div className="bg-blur">
           <DeckModal
             name={currentDeckActive.name}
             description={currentDeckActive.description}
@@ -73,7 +73,7 @@ export default function Home() {
       )}
 
       {isCreateCardModalOpen ? (
-        <div>
+        <div className="bg-blur">
           <CreateCardModal id={currentDeckActive.id} />
         </div>
       ) : (

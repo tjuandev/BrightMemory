@@ -1,18 +1,26 @@
-.modalContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.createCardModalContainer {
+  background: #f4f4f4;
+  height: 35rem;
+  width: 28rem;
+  padding: 1.5rem 2.5rem;
+  border-radius: 1.5rem;
 }
 
-.modalContainer > div {
-  width: 27.5rem;
-  height: 36rem;
-  background: var(--white);
-  border-radius: 1.5rem;
-  position: relative;
+.createCardModalContainer textarea {
+  display: block;
+  border: none;
+  width: 100%;
+  height: 8rem;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-radius: 0.5rem;
+}
+.button {
+  border: none;
+  background: var(--green);
+
+  color: #f4f4f4;
+  width: 100%;
+  border-radius: 0.5rem;
+  height: 3rem;
+  font-size: 1rem;
 }

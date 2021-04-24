@@ -14,7 +14,6 @@ export default function CardModal({ name, deckId }) {
     showAnswer,
     isAnswerShowing,
     isStudyFinished,
-    repeatedCardsArray,
   } = useContext(CardContext);
 
   const { loading } = useContext(DeckContext);

@@ -1,3 +1,5 @@
+import styles from "../../styles/Home/Deck.module.css";
+
 export default function Deck({
   name,
   description,

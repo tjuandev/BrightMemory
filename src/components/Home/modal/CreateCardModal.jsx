@@ -14,14 +14,19 @@ export default function CreateCardModal({ id }) {
   const { createCard } = useContext(CardContext);
 
   return (
-    <div className={styles.modalContainer}>
-      <div>
+    <div className="modalContainer">
+      <div className={styles.createCardModalContainer}>
         {loading ? (
-          <ClipLoader color="rgba(0, 0, 0, 0.4)" loading={true} size={50} />
+          <div className="LoadingContainer">
+            <ClipLoader color="rgba(0, 0, 0, 0.4)" loading={true} size={50} />
+            <p>Estamos criando seu deck...</p>
+          </div>
         ) : (
           <>
-            <strong>Crie seu Deck</strong>
-            <CloseModal modal="CreateCardModal" />
+            <header className="modalHeader">
+              <strong>Crie seu Deck</strong>
+              <CloseModal modal="CreateCardModal" />
+            </header>
             <form
               onSubmit={(e) => {
                 Loading(true);
@@ -38,12 +43,14 @@ export default function CreateCardModal({ id }) {
               }}
             >
               <label htmlFor="front">Parte Frontal</label>
-              <input type="text" name="front" />
+              <textarea type="text" name="front" required />
               <br />
               <label htmlFor="back">Parte Posterior</label>
-              <input type="text" name="back" />
+              <textarea type="text" name="back" required />
               <br />
-              <button type="submit">Feito!😊</button>
+              <button type="submit" className={styles.button}>
+                Feito
+              </button>
             </form>
           </>
         )}

@@ -13,12 +13,15 @@ export default function DeckModalButtons({ deckId }) {
   return (
     <div className={styles.buttonsContainer}>
       <button
+        className={`button-red ${styles.Button}`}
         onClick={() => {
-          activateModal("CardModal");
+          deleteDeck(deckId);
+          deleteAllCards(deckId);
+          fetchDecks(userId);
+          deactivateModal("DeckModal");
         }}
-        className={`button-green ${styles.Button}`}
       >
-        Estudar
+        Deletar Card
       </button>
       <button
         onClick={() => {
@@ -30,15 +33,12 @@ export default function DeckModalButtons({ deckId }) {
         Criar Card
       </button>
       <button
-        className={`button-red ${styles.Button}`}
         onClick={() => {
-          deleteDeck(deckId);
-          deleteAllCards(deckId);
-          fetchDecks(userId);
-          deactivateModal("DeckModal");
+          activateModal("CardModal");
         }}
+        className={`button-green ${styles.Button}`}
       >
-        Deletar Card
+        Estudar
       </button>
     </div>
   );
