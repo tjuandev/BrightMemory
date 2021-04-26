@@ -8,10 +8,10 @@ import CloseModal from "./CloseModal";
 import { CardContext } from "../../../contexts/CardContext";
 
 export default function CreateCardModal({ id }) {
-  const { loading, Loading, updateInfo, fetchDecks, userId } = useContext(
-    DeckContext
+  const { updateInfo, fetchDecks, userId } = useContext(DeckContext);
+  const { createCard, finishStudy, loading, loadingCards } = useContext(
+    CardContext
   );
-  const { createCard } = useContext(CardContext);
 
   return (
     <div className="modalContainer">
@@ -24,18 +24,19 @@ export default function CreateCardModal({ id }) {
         ) : (
           <>
             <header className="modalHeader">
-              <strong>Crie seu Deck</strong>
+              <strong>Crie seu Card</strong>
               <CloseModal modal="CreateCardModal" />
             </header>
             <form
               onSubmit={(e) => {
-                Loading(true);
+                loadingCards(true);
                 e.preventDefault();
                 createCard(id, e.target.front.value, e.target.back.value).then(
                   () => {
                     updateInfo("newCard", id).then(() => {
                       fetchDecks(userId).then(() => {
-                        Loading(false);
+                        loadingCards(false);
+                        finishStudy(false);
                       });
                     });
                   }

@@ -1,31 +1,77 @@
 .createDeckContainer {
   background: #f4f4f4;
 
-  width: 30rem;
-  height: 35rem;
+  width: 28rem;
+  height: 38rem;
 
   padding: 1.5rem 2.5rem;
+  border-radius: 1.5rem;
+}
+
+.form > label {
+  margin-bottom: 1rem;
 }
 
 .form > input {
   width: 100%;
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 0.85rem;
+  padding: 0.5rem;
+
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+
+  box-shadow: none;
 }
 
 .form > textarea {
   width: 100%;
+  height: 9rem;
   resize: none;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  box-shadow: none;
+  font-size: 0.85rem;
 }
 
-.colorsContainer > input {
-  appearance: none;
-  -webkit-appearance: none;
+.form > button {
+  margin-top: 1.5rem;
+  background: var(--green);
+  border: none;
+  color: #f4f4f4;
+  text-align: center;
 
-  background: red;
-  border: 1px solid red;
-  padding: 1rem;
-  margin-left: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 2.5rem;
+  font-size: 1rem;
+
+  transition: all 0.5s ease-in-out;
 }
 
-.colorsContainer > input:checked {
-  background: blue;
+.form > button:hover {
+  background: var(--main-light);
+  color: var(--main-dark);
+}
+
+.colorsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.colorsContainer > button {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  margin-top: 1rem;
+  margin-right: 1.5rem;
+}
+
+.colorsContainer > button:focus {
+  outline: none;
 }

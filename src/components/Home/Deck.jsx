@@ -1,24 +1,33 @@
-import styles from "../../styles/Home/Deck.module.css";
-
 export default function Deck({
   name,
+  photo_url,
   description,
   deckId,
   activateModal,
   reviewInfo,
+  colorClass,
 }) {
+  const reviewNumber =
+    reviewInfo.cardsToday + reviewInfo.newCards + reviewInfo.cardsToRepeat;
+
   return (
     <div
-      className="deck"
+      className={`deck ${colorClass}`}
       style={{ cursor: "pointer" }}
       onClick={() => {
-        activateModal("DeckModal", name, description, deckId, reviewInfo);
+        activateModal(
+          "DeckModal",
+          name,
+          photo_url,
+          description,
+          deckId,
+          reviewInfo,
+          colorClass
+        );
       }}
     >
-      <button>
-        {reviewInfo.cardsToday + reviewInfo.newCards + reviewInfo.cardsToRepeat}
-      </button>
-      <img src="/react.png" alt="react-icon-deck" />
+      {reviewNumber > 0 ? <button>{reviewNumber}</button> : ""}
+      <img src={photo_url || "/logo-home.svg"} alt="imagem-do-deck" />
       <strong>{name}</strong>
     </div>
   );

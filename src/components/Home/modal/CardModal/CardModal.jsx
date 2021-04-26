@@ -24,53 +24,68 @@ export default function CardModal({ name, deckId }) {
   }, []);
 
   return (
-    <div className={styles.modalContainer}>
-      <div>
+    <div className="modalContainer">
+      <div className={styles.cardModalContainer}>
         {loading ? (
           "loading"
         ) : (
           <>
-            <h2>Card de {name}</h2>
-            <button // Custom Close Button
-              onClick={() => {
-                deactivateModal("CardModal");
-                showAnswer(false);
-              }}
-              className="closeButton"
-            >
-              X
-            </button>
+            <header className="modalHeader">
+              <h2>Card de {name}</h2>
+              <button // Custom Close Button
+                onClick={() => {
+                  deactivateModal("CardModal");
+                  showAnswer(false);
+                }}
+                className="closeButton"
+              >
+                X
+              </button>
+            </header>
 
-            <div style={{ textAlign: "center" }}>
-              {isStudyFinished ? (
-                <h2>Congrats!</h2>
-              ) : (
-                <div className={styles.cardInfo}>
-                  <div className={styles.frontCard}>
-                    <strong>{currentCard.front || ""}</strong>
+            {isStudyFinished ? (
+              <div className={styles.endStudies}>
+                <h2>
+                  Parabéns, você estudou todos os cards que tinha para estudar
+                  hoje nesse deck!!! Você pode sair agora.
+                </h2>
+              </div>
+            ) : (
+              <>
+                <main className={styles.mainContent}>
+                  <div className={styles.cardInfo}>
+                    <div className={styles.frontCard}>
+                      <strong>{currentCard.front || ""}</strong>
+                    </div>
+
+                    {isAnswerShowing ? (
+                      <>
+                        <hr />
+                        <div className={styles.backCard}>
+                          <strong>{currentCard.back || ""}</strong>
+                        </div>
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </div>
-
-                  {isAnswerShowing ? (
-                    <>
-                      <hr />
-                      <div className={styles.backCard}>
-                        <strong>{currentCard.back || ""}</strong>
-                      </div>
-                    </>
-                  ) : (
-                    ""
-                  )}
-
-                  {isAnswerShowing ? (
-                    <CardModalButton />
-                  ) : (
-                    <button onClick={() => showAnswer(true)}>
-                      Mostrar Resposta
-                    </button>
-                  )}
-                </div>
-              )}
-            </div>
+                </main>
+                <footer>
+                  <div className={styles.buttonContainer}>
+                    {isAnswerShowing ? (
+                      <CardModalButton />
+                    ) : (
+                      <button
+                        onClick={() => showAnswer(true)}
+                        className={styles.showAnswerButton}
+                      >
+                        Mostrar Resposta
+                      </button>
+                    )}
+                  </div>
+                </footer>
+              </>
+            )}
           </>
         )}
       </div>

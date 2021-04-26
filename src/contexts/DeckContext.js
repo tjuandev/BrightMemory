@@ -30,13 +30,13 @@ const DeckContextProvider = ({ children }) => {
     return deck;
   }
 
-  async function createDeck(item) {
+  async function createDeck(item, color) {
     const deckSchema = {
       name: item.target.deck_name.value,
+      photo_url: item.target.deck_url.value,
       description: item.target.deck_description.value,
       userId,
       pendent: false,
-      photo_id: 1,
       review_info: {
         repeat_cards: 0,
         new_cards: 0,
@@ -44,6 +44,7 @@ const DeckContextProvider = ({ children }) => {
       },
       all_cards: 0,
       cards_number: 0,
+      color_class: color ? color : "bgPurple",
       created_at: new Date().getTime(),
     };
 
@@ -73,7 +74,7 @@ const DeckContextProvider = ({ children }) => {
   }
 
   async function deleteDeck(id) {
-    Loading(true);
+    loadingDeck(true);
 
     await fetch("/api/deck/delete", {
       method: "POST",
@@ -88,12 +89,12 @@ const DeckContextProvider = ({ children }) => {
         }
       });
       setDeckArray(changedArray);
-      Loading(false);
+      loadingDeck(false);
     });
   }
 
-  function Loading(active) {
-    setLoading(active || false);
+  function loadingDeck(bool) {
+    setLoading(bool);
   }
 
   async function getUserId(email) {
@@ -106,7 +107,7 @@ const DeckContextProvider = ({ children }) => {
     });
 
     userId.json().then((data) => {
-      setUserId(data);
+      setUserId(data._id);
     });
   }
 
@@ -119,7 +120,7 @@ const DeckContextProvider = ({ children }) => {
         deleteDeck,
         updateInfo,
         loading,
-        Loading,
+        loadingDeck,
         getUserId,
         userId,
       }}

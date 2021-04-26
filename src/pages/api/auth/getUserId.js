@@ -8,6 +8,6 @@ export default async (req, res) => {
     .find({ email: req.body.email })
     .toArray();
 
-  res.json(user[0]._id);
+  res.json(user[0]);
   res.end();
 };

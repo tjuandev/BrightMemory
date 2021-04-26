@@ -1,10 +1,15 @@
-import { useContext } from "react";
-import { DeckContext } from "../../../../contexts/DeckContext";
 import DeckModalButtons from "./DeckModalButtons";
 import CloseModal from "../CloseModal";
 import styles from "../../../../styles/Home/modal/DeckModal.module.css";
 
-export default function DeckModal({ name, description, deckId, reviewInfo }) {
+export default function DeckModal({
+  name,
+  photo_url,
+  description,
+  deckId,
+  reviewInfo,
+  colorClass,
+}) {
   return (
     <div className="modalContainer">
       <div className={styles.deckModalContainer}>
@@ -14,8 +19,8 @@ export default function DeckModal({ name, description, deckId, reviewInfo }) {
         </header>
         <div className={styles.deckInfoContainer}>
           <div className={styles.deckInfo}>
-            <div className="deck">
-              <img src="/react.png" alt="react-icon-deck" />
+            <div className={`deck ${colorClass}`}>
+              <img src={photo_url || "/logo-home.svg"} alt="react-icon-deck" />
               <strong>{name}</strong>
             </div>
             <DeckModalButtons deckId={deckId} />

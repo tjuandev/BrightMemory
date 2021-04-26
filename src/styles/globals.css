@@ -1,13 +1,16 @@
 :root {
-  --bg-light: #dcdcdc;
+  --text-light: #c3c3c3;
+  --main-light: #f4f4f4;
   --main-dark: #070a13;
   --white: #f4f4f4;
   --green: #2cc84d;
+  --bg-green: #56d370;
   --blue: #1e78ff;
   --red: #e73c3e;
-  --pink: #ff75e9;
-  --yellow: #ffd028;
-  --purple: #6c63ff;
+  --bg-red: #eb6264;
+  --bg-pink: #ffacf1;
+  --bg-yellow: #ffd028;
+  --bg-purple: #6c63ff;
   --gradient-blue: linear-gradient(
     97.51deg,
     #00409f 7.88%,
@@ -157,36 +160,52 @@ button {
 }
 
 .deck img {
-  margin-top: 3.25rem;
+  max-width: 8.5rem;
+  max-height: 8.5rem;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
 }
 
 .deck strong {
   margin-top: 1.7rem;
-  font-weight: 400;
+  font-weight: 500;
+
+  position: absolute;
+  top: 75%;
+  left: 50%;
+
+  width: 100%;
+
+  transform: translate(-50%, -50%);
 }
 
 /* Deck Background */
 
-.bgWhite {
-  background: #ffffff;
-}
-
 .bgPink {
-  background: var(--pink);
+  background: var(--bg-pink) !important;
+  color: var(--main-light);
 }
 
 .bgPurple {
-  background: var(--purple);
+  background: var(--bg-purple) !important;
+  color: var(--main-light);
 }
 
 .bgGreen {
-  background: var(--green);
+  background: var(--bg-green) !important;
+  color: var(--main-light);
 }
 
 .bgRed {
-  background: var(--red);
+  background: var(--bg-red) !important;
+  color: var(--main-light);
 }
 
 .bgYellow {
-  background: var(--yellow);
+  background: var(--bg-yellow) !important;
+  color: var(--main-light);
 }

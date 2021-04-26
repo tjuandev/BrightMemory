@@ -9,7 +9,7 @@ import CardModal from "../components/Home/modal/CardModal/CardModal.jsx";
 import User from "../components/Home/User";
 import CreateButton from "../components/Home/CreateButton";
 
-import { getSession } from "next-auth/client";
+import { getSession, signOut } from "next-auth/client";
 
 import styles from "../styles/Home/home.module.css";
 
@@ -30,6 +30,7 @@ export default function Home() {
           src="getout.svg"
           alt="Sign Out Button"
           className={styles.signOut}
+          onClick={signOut}
         />
       </aside>
       <div className={styles.mainContent}>
@@ -54,9 +55,11 @@ export default function Home() {
         <div className="bg-blur">
           <DeckModal
             name={currentDeckActive.name}
+            photo_url={currentDeckActive.photo_url}
             description={currentDeckActive.description}
             deckId={currentDeckActive.id}
             reviewInfo={currentDeckActive.reviewInfo}
+            colorClass={currentDeckActive.colorClass}
           />
         </div>
       ) : (

@@ -13,15 +13,24 @@ export const ModalContextProvider = ({ children }) => {
   function activateModal(
     modal,
     name = "",
+    photo_url = "",
     description = "",
     id = "",
-    reviewInfo = {}
+    reviewInfo = {},
+    colorClass = "bgPurple"
   ) {
     if (modal === "CreateDeckModal") {
       setIsCreateDeckModalOpen(true);
     } else if (modal === "DeckModal") {
       setIsDeckModalOpen(true);
-      setCurrentDeckActive({ name, description, id, reviewInfo }); // FIXME Posso dar um fetch decks só quando eu clicar!
+      setCurrentDeckActive({
+        name,
+        photo_url,
+        description,
+        id,
+        reviewInfo,
+        colorClass,
+      }); // FIXME Posso dar um fetch decks só quando eu clicar!
     } else if (modal === "CardModal") {
       setIsCardModalOpen(true);
     } else if (modal === "CreateCardModal") {

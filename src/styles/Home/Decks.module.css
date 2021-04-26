@@ -4,3 +4,21 @@
   grid-column-gap: 2rem;
   grid-row-gap: 3.75rem;
 }
+
+.message {
+  color: var(--text-light);
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.message > h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.message button {
+  background: var(--text-light);
+  width: 3.25rem;
+  height: 3.25rem;
+}

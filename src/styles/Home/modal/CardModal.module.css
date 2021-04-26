@@ -1,33 +1,96 @@
-.modalContainer {
+.cardModalContainer {
+  width: 50rem;
+  height: 35rem;
+  background: #f4f4f4;
+  border-radius: 1.5rem;
+
+  padding: 1.5rem 2.5rem;
+  position: relative;
+}
+
+.mainContent {
+  width: 100%;
+  max-height: 65%;
+
+  text-align: center;
+  overflow-y: auto;
+
+  display: flex;
+  justify-content: center;
+}
+
+.mainContent strong {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.frontCard {
+  margin-bottom: 2.5rem;
+}
+
+.backCard {
+  margin-top: 2.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 50%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.modalContainer > div {
-  width: 60vw; /* FIXME Podemos ter um problema aqui depois! */
-  height: 85vh;
-  background: var(--white);
-  border-radius: 1.5rem;
-  position: relative;
+.buttonContainer button {
+  width: 8rem;
+  margin-right: 1rem;
+  padding: 0.25rem;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border: none;
+  border-radius: 5px;
+  color: #f4f4f4;
+
+  transition: all 0.25s linear;
 }
 
-.closeButton {
+.buttonContainer button:hover {
+  background-color: #f4f4f4;
+  color: #000;
+}
+
+.buttonContainer button:last-child {
+  margin-right: 0;
+}
+
+.buttonRed {
   background: var(--red);
-  border: none;
-  color: var(--white);
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  position: absolute;
-  top: 1.5rem;
-  right: 1.8rem;
-  font-weight: bolder;
-  font-size: 1rem;
-  cursor: pointer;
+}
+
+.buttonYellow {
+  background: var(--bg-yellow);
+}
+
+.buttonGreen {
+  background: var(--green);
+}
+
+.showAnswerButton {
+  background: var(--green);
+  height: 2.5rem;
+  padding: 0.5rem;
+}
+
+.endStudies {
+  height: 70%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.endStudies > h2 {
+  color: var(--text-light);
 }

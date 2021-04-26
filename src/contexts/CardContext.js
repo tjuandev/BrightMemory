@@ -9,6 +9,8 @@ export const CardContextProvider = ({ children }) => {
   const [isStudyFinished, setIsStudyFinished] = useState(false);
   const [repeatedCardsArray, setRepeatedCardsArray] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+
   async function fetchCards(deckId) {
     let cards = [];
 
@@ -118,6 +120,14 @@ export const CardContextProvider = ({ children }) => {
     }
   }
 
+  function loadingCards(bool) {
+    setLoading(bool);
+  }
+
+  function finishStudy(bool) {
+    setIsStudyFinished(bool);
+  }
+
   return (
     <CardContext.Provider
       value={{
@@ -128,11 +138,14 @@ export const CardContextProvider = ({ children }) => {
         updateReview,
         nextCard,
         cardsToStudy,
+        finishStudy,
+        loadingCards,
         isAnswerShowing,
         currentCard,
         cardsArray,
         isStudyFinished,
         repeatedCardsArray,
+        loading,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DeckContext } from "../../../contexts/DeckContext";
 import { ModalContext } from "../../../contexts/ModalContext";
 
@@ -6,15 +6,17 @@ import styles from "../../../styles/Home/modal/CreateDeckModal.module.css";
 import CloseModal from "./CloseModal";
 
 export default function CreateDeckModal() {
-  const { loading, Loading, fetchDecks, userId, createDeck } = useContext(
+  const { loading, loadingDeck, fetchDecks, userId, createDeck } = useContext(
     DeckContext
   );
   const { deactivateModal } = useContext(ModalContext);
 
+  const [color, setColor] = useState(null);
+
   return (
     <div className="modalContainer">
-      <div className={styles.createDeckContainer}>
-        <header className="modalHeader">
+      <div className={`${styles.createDeckContainer} ${color}`}>
+        <header className="modalHeader" style={{ marginBottom: "1rem" }}>
           <strong>Crie seu Deck</strong>
           <CloseModal modal="CreateDeckModal" />
         </header>
@@ -23,16 +25,16 @@ export default function CreateDeckModal() {
           className={styles.form}
           onSubmit={async (item) => {
             item.preventDefault();
-            Loading(true);
+            loadingDeck(true);
 
-            createDeck(item).then(() => {
+            createDeck(item, color).then(() => {
               fetchDecks(userId);
-              Loading(false);
+              loadingDeck(false);
               deactivateModal("CreateDeckModal");
             });
           }}
         >
-          <label htmlFor="deck_name">Nome do Deck</label>
+          <label htmlFor="deck_name">Nome do Deck:</label>
           <input
             type="text"
             name="deck_name"
@@ -40,7 +42,10 @@ export default function CreateDeckModal() {
             placeholder="Digite o nome do seu deck aqui"
           />
 
-          <label htmlFor="deck_description">Descrição</label>
+          <label htmlFor="deck_photoUrl">Url de Imagem (opcional):</label>
+          <input type="url" name="deck_url" placeholder="Cole a URL aqui" />
+
+          <label htmlFor="deck_description">Descrição:</label>
           <textarea
             name="deck_description"
             id="deck_description"
@@ -50,17 +55,37 @@ export default function CreateDeckModal() {
             required
           ></textarea>
 
-          <label htmlFor="deckColor">Escolhar uma cor</label>
+          <label htmlFor="deckColor">Escolhar uma cor:</label>
+
           <div className={styles.colorsContainer}>
-            <input type="checkbox" className="bgWhite"></input>
-            <input type="checkbox" className="bgRed"></input>
-            <input type="checkbox" className="bgYellow"></input>
-            <input type="checkbox" className="bgGreen"></input>
-            <input type="checkbox" className="bgPurple"></input>
-            <input type="checkbox" className="bgPink"></input>
+            <button
+              className="bgRed"
+              onClick={() => setColor("bgRed")}
+              type="button"
+            />
+            <button
+              className="bgYellow"
+              onClick={() => setColor("bgYellow")}
+              type="button"
+            />
+            <button
+              className="bgGreen"
+              onClick={() => setColor("bgGreen")}
+              type="button"
+            />
+            <button
+              className="bgPurple"
+              onClick={() => setColor("bgPurple")}
+              type="button"
+            />
+            <button
+              className="bgPink"
+              onClick={() => setColor("bgPink")}
+              type="button"
+            />
           </div>
 
-          <button type="submit">Feito!</button>
+          <button type="submit">Criar</button>
         </form>
       </div>
     </div>
