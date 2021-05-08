@@ -12,6 +12,42 @@
   max-width: 93.5%;
 }
 
+.deckImage {
+  background: #fff;
+  height: 14.5rem;
+  width: 11rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.deckImage img {
+  max-width: 8.5rem;
+  max-height: 8.5rem;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.deckImage strong {
+  margin-top: 1.7rem;
+  font-weight: 500;
+
+  position: absolute;
+  top: 75%;
+  left: 50%;
+
+  width: 100%;
+
+  transform: translate(-50%, -50%);
+}
+
 .deckInfo {
   display: flex;
   flex-direction: column;
@@ -52,5 +88,17 @@
   font-size: 1rem;
   border: none;
   border-radius: 0.35rem;
+}
+
+.allowed {
   cursor: pointer;
+}
+
+.notAllowed {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.notAllowed:focus {
+  outline: none;
 }

@@ -19,7 +19,7 @@ export default function DeckModal({
         </header>
         <div className={styles.deckInfoContainer}>
           <div className={styles.deckInfo}>
-            <div className={`deck ${colorClass}`}>
+            <div className={`${styles.deckImage} ${colorClass}`}>
               <img src={photo_url || "/logo-home.svg"} alt="react-icon-deck" />
               <strong>{name}</strong>
             </div>

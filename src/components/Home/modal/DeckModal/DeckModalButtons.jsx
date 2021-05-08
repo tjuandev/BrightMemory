@@ -6,7 +6,7 @@ import { CardContext } from "../../../../contexts/CardContext";
 import styles from "../../../../styles/Home/modal/DeckModal.module.css";
 
 export default function DeckModalButtons({ deckId }) {
-  const { deleteAllCards } = useContext(CardContext);
+  const { deleteAllCards, cardsArray } = useContext(CardContext);
   const { deleteDeck, fetchDecks, userId } = useContext(DeckContext);
   const { deactivateModal, activateModal } = useContext(ModalContext);
 
@@ -34,9 +34,14 @@ export default function DeckModalButtons({ deckId }) {
       </button>
       <button
         onClick={() => {
-          activateModal("CardModal");
+          if (cardsArray.length > 0) {
+            activateModal("CardModal");
+          }
+          return;
         }}
-        className={`button-green ${styles.Button}`}
+        className={`button-green ${
+          cardsArray.length > 0 ? styles.allowed : styles.notAllowed
+        } ${styles.Button}`}
       >
         Estudar
       </button>

@@ -1,3 +1,5 @@
+import styles from "../../styles/Home/Deck.module.css";
+
 export default function Deck({
   name,
   photo_url,
@@ -12,7 +14,7 @@ export default function Deck({
 
   return (
     <div
-      className={`deck ${colorClass}`}
+      className={`${styles.deck} ${colorClass}`}
       style={{ cursor: "pointer" }}
       onClick={() => {
         activateModal(

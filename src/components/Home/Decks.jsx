@@ -58,7 +58,7 @@ export default function Decks() {
               </h2>
             </div>
           ) : (
-            <div className={styles.decksContainer}>
+            <main className={styles.decksContainer}>
               {deckArray.map((deck) => {
                 return (
                   <Deck
@@ -79,7 +79,7 @@ export default function Decks() {
                   />
                 );
               })}
-            </div>
+            </main>
           )}
         </>
       )}

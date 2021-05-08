@@ -130,58 +130,6 @@ button {
 }
 
 /* Deck */
-.deck {
-  background: #fff;
-  height: 14.5rem;
-  width: 11rem;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  text-align: center;
-}
-
-.deck > button {
-  position: absolute;
-  top: 1rem;
-  left: 1.1rem;
-  background: var(--red);
-  border-radius: 50%;
-
-  width: 1.55rem;
-  height: 1.55rem;
-
-  text-align: center;
-  color: #f4f4f4;
-  font-size: 0.8rem;
-
-  border: none;
-}
-
-.deck img {
-  max-width: 8.5rem;
-  max-height: 8.5rem;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-}
-
-.deck strong {
-  margin-top: 1.7rem;
-  font-weight: 500;
-
-  position: absolute;
-  top: 75%;
-  left: 50%;
-
-  width: 100%;
-
-  transform: translate(-50%, -50%);
-}
 
 /* Deck Background */
 

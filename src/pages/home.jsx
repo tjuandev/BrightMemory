@@ -38,9 +38,7 @@ export default function Home() {
           <User />
           <CreateButton />
         </header>
-        <main>
-          <Decks />
-        </main>
+        <Decks />
       </div>
 
       {isCreateDeckModalOpen ? (

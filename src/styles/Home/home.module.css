@@ -4,16 +4,17 @@
 
   display: flex;
   background: #f4f4f4;
-
-  overflow: hidden;
 }
 
 .asideContainer {
   height: 100vh;
-  width: 4.5rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 
   align-items: center;
   justify-content: space-between;
@@ -49,4 +50,10 @@
   width: 100%;
 
   margin-bottom: 3.5rem;
+}
+
+@media (max-width: 460px) {
+  .mainContent {
+    margin: 2rem;
+  }
 }
