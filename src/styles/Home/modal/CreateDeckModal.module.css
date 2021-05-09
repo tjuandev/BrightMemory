@@ -75,3 +75,25 @@
 .colorsContainer > button:focus {
   outline: none;
 }
+
+@media screen and (max-width: 980px) and (min-height: 1100px) {
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+}
+
+@media screen and (min-width: 540px) and (max-width: 768px) {
+}
+
+/* @media screen and (min-width: 321px) and (max-width: 539px) {
+  .createDeckContainer {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+  }
+} */
+
+@media screen and (max-width: 320px) {
+}

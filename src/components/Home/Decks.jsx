@@ -54,7 +54,7 @@ export default function Decks() {
             <div className={styles.message}>
               <h2>
                 Você ainda não possui nenhum Deck criado, clique no botão{" "}
-                <CreateButton /> para criar um.
+                <CreateButton isActive={false} /> para criar um.
               </h2>
             </div>
           ) : (

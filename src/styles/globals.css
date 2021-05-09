@@ -41,10 +41,6 @@ button {
   cursor: pointer;
 }
 
-#__next {
-  overflow: hidden;
-}
-
 .bg-dark {
   background: var(--main-dark);
 }
@@ -157,3 +153,21 @@ button {
   background: var(--bg-yellow) !important;
   color: var(--main-light);
 }
+
+/* @media screen and (min-width: 321px) and (max-width: 539px) {
+  .modalContainer {
+    top: 0;
+    left: calc(50% - 1.5rem);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+  }
+
+  .bg-blur {
+    min-width: 100%;
+    min-height: 100%;
+    background: transparent;
+    backdrop-filter: none;
+    left: calc(50% - 1.5rem);
+  }
+} */

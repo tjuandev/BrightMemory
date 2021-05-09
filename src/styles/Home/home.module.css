@@ -4,6 +4,8 @@
 
   display: flex;
   background: #f4f4f4;
+
+  overflow-y: auto;
 }
 
 .asideContainer {
@@ -36,6 +38,7 @@
 
 .signOut {
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 
 .mainContent {
@@ -52,8 +55,14 @@
   margin-bottom: 3.5rem;
 }
 
+/* @media screen and (min-width: 321px) and (max-width: 539px) {
+  .mainContent {
+  }
+}
+
 @media (max-width: 460px) {
   .mainContent {
     margin: 2rem;
   }
 }
+ */

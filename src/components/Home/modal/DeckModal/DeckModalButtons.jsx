@@ -5,10 +5,12 @@ import { CardContext } from "../../../../contexts/CardContext";
 
 import styles from "../../../../styles/Home/modal/DeckModal.module.css";
 
-export default function DeckModalButtons({ deckId }) {
+export default function DeckModalButtons({ deckId, reviewInfo }) {
   const { deleteAllCards, cardsArray } = useContext(CardContext);
   const { deleteDeck, fetchDecks, userId } = useContext(DeckContext);
   const { deactivateModal, activateModal } = useContext(ModalContext);
+
+  const review = reviewInfo.cardsToday > 0 || reviewInfo.newCards > 0;
 
   return (
     <div className={styles.buttonsContainer}>
@@ -34,13 +36,13 @@ export default function DeckModalButtons({ deckId }) {
       </button>
       <button
         onClick={() => {
-          if (cardsArray.length > 0) {
-            activateModal("CardModal");
+          if (review) {
+            return activateModal("CardModal");
           }
           return;
         }}
         className={`button-green ${
-          cardsArray.length > 0 ? styles.allowed : styles.notAllowed
+          review ? styles.allowed : styles.notAllowed
         } ${styles.Button}`}
       >
         Estudar

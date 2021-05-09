@@ -23,7 +23,7 @@ export default function DeckModal({
               <img src={photo_url || "/logo-home.svg"} alt="react-icon-deck" />
               <strong>{name}</strong>
             </div>
-            <DeckModalButtons deckId={deckId} />
+            <DeckModalButtons deckId={deckId} reviewInfo={reviewInfo} />
           </div>
           <div className={styles.deckStudyInfo}>
             <p>

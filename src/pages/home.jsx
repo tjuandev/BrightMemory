@@ -30,56 +30,59 @@ export default function Home() {
           src="getout.svg"
           alt="Sign Out Button"
           className={styles.signOut}
-          onClick={signOut}
+          onClick={() => {
+            signOut();
+            console.log("Você clicou para sair!");
+          }}
         />
       </aside>
       <div className={styles.mainContent}>
         <header>
           <User />
-          <CreateButton />
+          <CreateButton isActive={true} />
         </header>
         <Decks />
-      </div>
 
-      {isCreateDeckModalOpen ? (
-        <div className="bg-blur">
-          <CreateDeckModal />
-        </div>
-      ) : (
-        ""
-      )}
+        {isCreateDeckModalOpen ? (
+          <div className="bg-blur">
+            <CreateDeckModal />
+          </div>
+        ) : (
+          ""
+        )}
 
-      {isDeckModalOpen ? (
-        <div className="bg-blur">
-          <DeckModal
+        {isDeckModalOpen ? (
+          <div className="bg-blur">
+            <DeckModal
+              name={currentDeckActive.name}
+              photo_url={currentDeckActive.photo_url}
+              description={currentDeckActive.description}
+              deckId={currentDeckActive.id}
+              reviewInfo={currentDeckActive.reviewInfo}
+              colorClass={currentDeckActive.colorClass}
+            />
+          </div>
+        ) : (
+          ""
+        )}
+
+        {isCardModalOpen ? (
+          <CardModal
             name={currentDeckActive.name}
-            photo_url={currentDeckActive.photo_url}
-            description={currentDeckActive.description}
             deckId={currentDeckActive.id}
-            reviewInfo={currentDeckActive.reviewInfo}
-            colorClass={currentDeckActive.colorClass}
           />
-        </div>
-      ) : (
-        ""
-      )}
+        ) : (
+          ""
+        )}
 
-      {isCardModalOpen ? (
-        <CardModal
-          name={currentDeckActive.name}
-          deckId={currentDeckActive.id}
-        />
-      ) : (
-        ""
-      )}
-
-      {isCreateCardModalOpen ? (
-        <div className="bg-blur">
-          <CreateCardModal id={currentDeckActive.id} />
-        </div>
-      ) : (
-        ""
-      )}
+        {isCreateCardModalOpen ? (
+          <div className="bg-blur">
+            <CreateCardModal id={currentDeckActive.id} />
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }

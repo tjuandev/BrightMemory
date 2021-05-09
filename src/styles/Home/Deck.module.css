@@ -85,17 +85,22 @@
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 540px) and (max-width: 768px) {
   .deck {
-    width: calc(100% / 3);
-    height: calc(100% / 3);
+    width: calc(100% / 3 - 1rem);
+    height: calc((100% / 3.5) - 1rem);
   }
 }
 
-@media screen and (min-width: 321px) and (max-width: 480px) {
+@media screen and (min-width: 321px) and (max-width: 539px) {
   .deck {
-    width: 100%;
-    height: 60%;
+    flex-grow: 1;
+    width: 45%;
+    height: 30%;
+  }
+
+  .deck > strong {
+    font-size: 0.95rem;
   }
 }
 

@@ -53,6 +53,8 @@ export default function CreateDeckModal() {
             rows="10"
             placeholder="Digite a descrição aqui"
             required
+            minLength="50"
+            maxLength="250"
           ></textarea>
 
           <label htmlFor="deckColor">Escolhar uma cor:</label>

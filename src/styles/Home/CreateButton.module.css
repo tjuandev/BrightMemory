@@ -6,8 +6,6 @@
   width: 3.625rem;
   height: 3.625rem;
   font-size: 1.35rem;
-
-  cursor: pointer;
 }
 
 .createButton:focus {
