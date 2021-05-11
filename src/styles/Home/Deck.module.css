@@ -44,7 +44,7 @@
   border: none;
 }
 
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1024px) {
   .deck {
     width: calc(100% / 6 - 0.87rem);
     height: 40%;
@@ -110,3 +110,4 @@
     height: 40%;
   }
 }
+ */
