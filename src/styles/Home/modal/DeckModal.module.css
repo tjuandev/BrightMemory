@@ -102,3 +102,67 @@
 .notAllowed:focus {
   outline: none;
 }
+
+@media screen and (min-width: 270px) and (max-width: 662px) {
+  .deckModalContainer {
+    width: 26rem;
+    max-height: 40rem;
+
+    padding: 1.5rem;
+  }
+
+  .deckInfo {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 0;
+  }
+
+  .deckInfo div:first-child {
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+
+  .deckInfoContainer {
+    display: flex;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .deckStudyInfo {
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
+
+  .deckStudyInfo > p {
+    font-size: 1.1rem;
+  }
+
+  .deckStudyInfo > ul {
+    margin-top: 1rem;
+  }
+
+  .Button {
+    height: 4.45rem;
+    width: 11.2rem;
+  }
+}
+
+@media screen and (max-width: 364px) {
+  .deckModalContainer {
+    width: 25rem;
+    max-height: 40rem;
+
+    padding: 1rem;
+  }
+
+  .deckInfo div:first-child {
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+
+  .deckStudyInfo {
+    margin-top: 0.5rem;
+    align-self: flex-start;
+  }
+}

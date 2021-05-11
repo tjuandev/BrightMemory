@@ -11,7 +11,6 @@ export default function Deck({
 }) {
   const reviewNumber =
     reviewInfo.cardsToday + reviewInfo.newCards + reviewInfo.cardsToRepeat;
-
   return (
     <div
       className={`${styles.deck} ${colorClass}`}

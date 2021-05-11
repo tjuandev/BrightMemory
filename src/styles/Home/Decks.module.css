@@ -1,11 +1,58 @@
 .decksContainer {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 
-  display: flex;
+  /* display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1rem; */
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 260px;
+  grid-gap: 1rem;
+}
+
+.createButtonDeactivated {
+  color: var(--white);
+  background: var(--gradient-blue);
+  border: none;
+  border-radius: 50%;
+  width: 3.625rem;
+  height: 3.625rem;
+  font-size: 1.35rem;
+
+  cursor: initial;
+}
+
+@media screen and (min-width: 881px) and (max-width: 1080px) {
+  .decksContainer {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 880px) {
+  .decksContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 540px) and (max-width: 768px) {
+  .decksContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 539px) {
+  .decksContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .decksContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .message {

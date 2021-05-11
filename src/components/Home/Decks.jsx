@@ -7,19 +7,12 @@ import { DeckContext } from "../../contexts/DeckContext";
 import styles from "../../styles/Home/Decks.module.css";
 import { ModalContext } from "../../contexts/ModalContext";
 import { CardContext } from "../../contexts/CardContext";
-import CreateButton from "./CreateButton";
 
 import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Decks() {
-  const {
-    deckArray,
-    fetchDecks,
-    userId,
-    updateInfo,
-    loading,
-    loadingDeck,
-  } = useContext(DeckContext);
+  const { deckArray, fetchDecks, userId, updateInfo, loading, loadingDeck } =
+    useContext(DeckContext);
   const { cardsToStudy } = useContext(CardContext);
   const { activateModal } = useContext(ModalContext);
 
@@ -54,7 +47,10 @@ export default function Decks() {
             <div className={styles.message}>
               <h2>
                 Você ainda não possui nenhum Deck criado, clique no botão{" "}
-                <CreateButton isActive={false} /> para criar um.
+                <button className={styles.createButtonDeactivated} disabled>
+                  +
+                </button>{" "}
+                para criar um.
               </h2>
             </div>
           ) : (

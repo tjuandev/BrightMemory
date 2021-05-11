@@ -3,11 +3,24 @@
   background: var(--gradient-blue);
   border: none;
   border-radius: 50%;
-  width: 3.625rem;
-  height: 3.625rem;
+  width: 4rem;
+  height: 4rem;
   font-size: 1.35rem;
+
+  margin-right: 4rem;
+
+  position: fixed;
+  top: 88%;
+  right: 0;
 }
 
 .createButton:focus {
   outline: none;
+}
+
+@media screen and (min-width: 321px) and (max-width: 539px) {
+  .createButton {
+    margin: 0 2rem;
+    right: 0;
+  }
 }
