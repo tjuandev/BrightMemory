@@ -64,10 +64,12 @@ export default function Home() {
       )}
 
       {isCardModalOpen ? (
-        <CardModal
-          name={currentDeckActive.name}
-          deckId={currentDeckActive.id}
-        />
+        <div className="bg-blur">
+          <CardModal
+            name={currentDeckActive.name}
+            deckId={currentDeckActive.id}
+          />
+        </div>
       ) : (
         ""
       )}

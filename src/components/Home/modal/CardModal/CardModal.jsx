@@ -21,6 +21,7 @@ export default function CardModal({ name, deckId }) {
 
   useEffect(() => {
     fetchCards(deckId);
+    deactivateModal("DeckModal");
   }, []);
 
   return (
@@ -46,8 +47,8 @@ export default function CardModal({ name, deckId }) {
             {isStudyFinished ? (
               <div className={styles.endStudies}>
                 <h2>
-                  Parabéns, você estudou todos os cards que tinha para estudar
-                  hoje nesse deck!!! Você pode sair agora.
+                  Parabéns! Você estudou todos os cards de hoje :) Você pode
+                  sair agora!
                 </h2>
               </div>
             ) : (

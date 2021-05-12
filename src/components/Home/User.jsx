@@ -7,7 +7,7 @@ import { DeckContext } from "../../contexts/DeckContext";
 export default function User() {
   const session = useSession();
 
-  const { getUserId } = useContext(DeckContext);
+  const { getUserId, deckArray } = useContext(DeckContext);
 
   useEffect(() => {
     if (session[0]) {
@@ -18,13 +18,13 @@ export default function User() {
   return (
     <>
       {!session[0] ? (
-        <h1>loading page</h1>
+        <span>Carregando Dados</span>
       ) : (
         <div className={styles.userInfo}>
           <img src={session[0].user.image} alt="thiago-user" />
           <div className={styles.userTextInfo}>
             <strong>{session[0].user.name}</strong>
-            <p>Decks</p>
+            <p>{deckArray.length || 0} Decks</p>
           </div>
         </div>
       )}

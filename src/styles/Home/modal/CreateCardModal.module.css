@@ -34,3 +34,17 @@
   background-color: #f4f4f4;
   color: #000;
 }
+
+@media screen and (min-width: 270px) and (max-width: 662px) {
+  .createCardModalContainer {
+    width: 26rem;
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width: 364px) {
+  .createCardModalContainer {
+    width: 24.5rem;
+    padding: 1.5rem;
+  }
+}

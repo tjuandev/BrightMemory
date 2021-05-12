@@ -23,4 +23,8 @@ export default NextAuth({
     },
   },
   database: process.env.MONGODB_URI,
+  pages: {
+    signIn: "/signin",
+    signOut: "/signin",
+  },
 });

@@ -93,3 +93,38 @@
 .endStudies > h2 {
   color: var(--text-light);
 }
+
+@media screen and (min-width: 270px) and (max-width: 662px) {
+  .createCardModalContainer {
+    width: 26rem;
+    padding: 2rem;
+  }
+}
+
+@media screen and (min-width: 270px) and (max-width: 662px) {
+  .cardModalContainer {
+    width: 24rem;
+    height: 35rem;
+    background: #f4f4f4;
+    border-radius: 1.5rem;
+
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .buttonContainer button {
+    width: 6.75rem;
+    margin-right: 1rem;
+    padding: 0.25rem;
+
+    border: none;
+    border-radius: 5px;
+    color: #f4f4f4;
+
+    transition: all 0.25s linear;
+  }
+
+  .showAnswerButton {
+    width: 10rem !important;
+  }
+}
