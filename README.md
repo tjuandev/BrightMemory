@@ -6,5 +6,7 @@
 
 ## Apresentações
 
-O Brigth Memory vem com o intuito de disponibilizar um estudo de flashcards intuitivo, visando disponibilizar uma satisfatória disponibilidade de customização, trazendo liberdade aos usuários, sendo estes capazes de montar os seu próprio lugar de estudo dentro da aplicação.
+O Brigth Memory vem com o intuito de disponibilizar um estudo de FlashCards intuitivo, visando disponibilizar uma satisfatória disponibilidade de customização, trazendo liberdade aos usuários, sendo estes capazes de montar os seu próprio lugar de estudo dentro da aplicação.
+
+## O que é e como funciona os FlashCards?
 
