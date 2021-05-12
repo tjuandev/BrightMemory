@@ -12,7 +12,9 @@ export default async (req, res) => {
   const today = new Date();
 
   const cardsToReview = cards.filter((card) => {
-    return isSameDay(card.reviewWhen, today);
+    if(isSameDay(card.reviewWhen, today) || card.isNew) {
+      return true;
+    }
   });
 
   res.json(cardsToReview);

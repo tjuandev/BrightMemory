@@ -9,6 +9,11 @@ export default function Buttons() {
 
   const { updateInfo } = useContext(DeckContext);
 
+  const calcTime = (degree) => {
+    const daysToReview = (currentCard.reviewTime - 1) * degree;
+    return daysToReview;
+  };
+
   return (
     <>
       {/* <button
@@ -38,7 +43,7 @@ export default function Buttons() {
           if (currentCard.isRepeat) {
             isToNotRepeat = true;
           }
-          updateReview(3, false, isToNotRepeat).then(() => {
+          updateReview(calcTime(1), false, isToNotRepeat).then(() => {
             nextCard();
             if (currentCard.isRepeat) {
               updateInfo("cardRepeatReviewed", currentCard.deckId);
@@ -49,7 +54,7 @@ export default function Buttons() {
       >
         Difícil
         <br />
-        <small>2 dias</small>
+        <small>{calcTime(1)} dias</small>
       </button>
       <button
         onClick={() => {
@@ -62,7 +67,7 @@ export default function Buttons() {
           if (currentCard.isRepeat) {
             isToNotRepeat = true;
           }
-          updateReview(5, false, isToNotRepeat).then(() => {
+          updateReview(calcTime(5), false, isToNotRepeat).then(() => {
             nextCard();
             if (currentCard.isRepeat) {
               updateInfo("cardRepeatReviewed", currentCard.deckId);
@@ -73,7 +78,7 @@ export default function Buttons() {
       >
         Médio
         <br />
-        <small>5 dias</small>
+        <small>{calcTime(5)} dias</small>
       </button>
       <button
         onClick={() => {
@@ -86,7 +91,7 @@ export default function Buttons() {
           if (currentCard.isRepeat) {
             isToNotRepeat = true;
           }
-          updateReview(7, false, isToNotRepeat).then(() => {
+          updateReview(calcTime(7), false, isToNotRepeat).then(() => {
             nextCard();
             if (currentCard.isRepeat) {
               updateInfo("cardRepeatReviewed", currentCard.deckId);
@@ -97,7 +102,7 @@ export default function Buttons() {
       >
         Fácil
         <br />
-        <small>7 dias</small>
+        <small>{calcTime(7)} dias</small>
       </button>
     </>
   );

@@ -12,6 +12,7 @@ export default async (req, res) => {
   });
 
   if (!req.body.repeat && !req.body.isNotToRepeat) {
+    // NOTE Not working now
     await db.collection("cards").updateOne(
       { _id: cardId },
       {

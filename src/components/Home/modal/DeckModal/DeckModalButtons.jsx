@@ -6,7 +6,7 @@ import { CardContext } from "../../../../contexts/CardContext";
 import styles from "../../../../styles/Home/modal/DeckModal.module.css";
 
 export default function DeckModalButtons({ deckId, reviewInfo }) {
-  const { deleteAllCards, cardsArray } = useContext(CardContext);
+  const { deleteAllCards } = useContext(CardContext);
   const { deleteDeck, fetchDecks, userId } = useContext(DeckContext);
   const { deactivateModal, activateModal } = useContext(ModalContext);
 
@@ -23,7 +23,7 @@ export default function DeckModalButtons({ deckId, reviewInfo }) {
           deactivateModal("DeckModal");
         }}
       >
-        Deletar Card
+        Deletar Deck
       </button>
       <button
         onClick={() => {

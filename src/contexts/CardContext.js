@@ -7,7 +7,7 @@ export const CardContextProvider = ({ children }) => {
   const [currentCard, setCurrentCard] = useState({ front: "", back: "" });
   const [isAnswerShowing, setIsAnswerShowing] = useState(false);
   const [isStudyFinished, setIsStudyFinished] = useState(false);
-  const [repeatedCardsArray, setRepeatedCardsArray] = useState([]);
+  /* const [repeatedCardsArray, setRepeatedCardsArray] = useState([]); */
 
   const [loading, setLoading] = useState(false);
 
@@ -73,9 +73,11 @@ export const CardContextProvider = ({ children }) => {
     });
   }
 
-  async function updateReview(degree, repeat = false, isNotToRepeat = false) {
-    const daysToReview = (currentCard.reviewTime - 1) * degree;
-
+  async function updateReview(
+    daysToReview,
+    repeat = false,
+    isNotToRepeat = false
+  ) {
     return await fetch("/api/card/review", {
       method: "POST",
       body: JSON.stringify({
@@ -94,11 +96,7 @@ export const CardContextProvider = ({ children }) => {
     setIsAnswerShowing(active || false);
   }
 
-  function nextCard(repeat = false) {
-    if (repeat) {
-      setRepeatedCardsArray([...repeatedCardsArray, currentCard]);
-    }
-
+  function nextCard() {
     let newCardArray = cardsArray.filter((card) => {
       if (currentCard === card) {
         return false;
@@ -112,10 +110,10 @@ export const CardContextProvider = ({ children }) => {
     if (cardsArray.length > 1) {
       setCardsArray(newCardArray);
       setCurrentCard(newCardArray[0]);
-    } else if (cardsArray.length === 1 && repeatedCardsArray.length > 0) {
+    } /* else if (cardsArray.length === 1 && repeatedCardsArray.length > 0) {
       setCardsArray([...repeatedCardsArray]);
-      setRepeatedCardsArray([]); // Transferência de Dados
-    } else if (cardsArray.length === 1 && !repeat) {
+      setRepeatedCardsArray([]); } // Transferência de Dados 
+      NOTE => Future Update */ else if (cardsArray.length === 1) {
       setIsStudyFinished(true);
     }
   }
@@ -144,7 +142,6 @@ export const CardContextProvider = ({ children }) => {
         currentCard,
         cardsArray,
         isStudyFinished,
-        repeatedCardsArray,
         loading,
       }}
     >
