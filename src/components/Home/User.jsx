@@ -1,6 +1,6 @@
 import styles from "../../styles/Home/User.module.css";
 
-import { signOut, useSession } from "next-auth/client";
+import { useSession } from "next-auth/client";
 import { useContext, useEffect } from "react";
 import { DeckContext } from "../../contexts/DeckContext";
 

@@ -19,7 +19,6 @@ export default function DeckModalButtons({ deckId, reviewInfo }) {
         onClick={() => {
           deleteDeck(deckId);
           deleteAllCards(deckId);
-          fetchDecks(userId);
           deactivateModal("DeckModal");
         }}
       >

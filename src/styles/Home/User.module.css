@@ -13,3 +13,19 @@
   border-radius: 50%;
   margin-right: 0.95rem;
 }
+
+@media screen and (min-width: 321px) and (max-width: 539px) {
+  .userTextInfo > strong {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .userTextInfo > p {
+    font-size: 0.85rem;
+  }
+
+  .userInfo img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}

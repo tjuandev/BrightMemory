@@ -12,6 +12,7 @@
 .logInContainer > img {
   width: 50%;
   margin-bottom: 5rem;
+  cursor: pointer;
 }
 
 .logInContainer button {

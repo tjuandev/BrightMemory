@@ -1,11 +1,18 @@
 import { signIn, getSession, getProviders } from "next-auth/client";
+import { useRouter } from "next/router";
 
 import styles from "../styles/SignIn.module.css";
 
 export default function SignIn({ providers }) {
+  const router = useRouter();
+
   return (
     <div className={styles.logInContainer}>
-      <img src="/logo.svg" alt="Brigth Memory Logo" />
+      <img
+        src="/logo.svg"
+        alt="Brigth Memory Logo"
+        onClick={() => router.push("/p")}
+      />
       {Object.values(providers).map((provider) => (
         <div key={provider.name}>
           <button onClick={() => signIn(provider.id)}>
