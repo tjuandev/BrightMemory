@@ -32,12 +32,6 @@ export default function DeckModal({
             </p>
 
             <ul>
-              {/* <li>
-                    <strong style={{ color: "var(--red)" }}>
-                      Revisão Crítica:
-                    </strong>{" "}
-                    {reviewInfo.cardsToRepeat}
-                  </li> NOTE Future Update*/}
               <li>
                 <strong style={{ color: "var(--green)" }}>
                   Revisão Atual:

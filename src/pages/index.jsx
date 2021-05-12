@@ -1,12 +1,17 @@
 import styles from "../styles/Landing/Landing.module.css";
 import { signIn } from "next-auth/client";
 
+import Head from "next/head";
+
 export default function Landing() {
   return (
     <div className={styles.landingContainer}>
+      <Head>
+        <title>Brigth Memory | Landing</title>
+      </Head>
       <div className={styles.elementsContainer}>
         <header className={styles.headerNavigation}>
-          <img src="/logo.svg" alt="BrithMemory-logo" />
+          <img src="/logo.svg" alt="BrigthMemory-logo" />
 
           <div>
             <a href="#" onClick={signIn}>

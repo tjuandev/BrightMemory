@@ -16,22 +16,6 @@ export default function Buttons() {
 
   return (
     <>
-      {/* <button
-          onClick={() => {
-            if (currentCard.isNew)
-              updateInfo("newCardReviewed", currentCard.deckId);
-            updateReview(0, true).then(() => {
-              nextCard();
-              if (!currentCard.isRepeat) {
-                updateInfo("repeatReview", currentCard.deckId);
-              }
-            });
-          }}
-        >
-          Repetir <br />
-          <small>{"<"} 1min</small>
-        </button> 
-        NOTE Future release */}
       <button
         onClick={() => {
           let isToNotRepeat = false;

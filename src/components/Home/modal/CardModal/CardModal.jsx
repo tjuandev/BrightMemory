@@ -33,7 +33,7 @@ export default function CardModal({ name, deckId }) {
           <>
             <header className="modalHeader">
               <h2>Card de {name}</h2>
-              <button // Custom Close Button
+              <button
                 onClick={() => {
                   deactivateModal("CardModal");
                   showAnswer(false);

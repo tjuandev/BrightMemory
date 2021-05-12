@@ -88,6 +88,7 @@ const DeckContextProvider = ({ children }) => {
           return true;
         }
       });
+
       setDeckArray(changedArray);
       loadingDeck(false);
     });

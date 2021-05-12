@@ -2,12 +2,16 @@ import { signIn, getSession, getProviders } from "next-auth/client";
 import { useRouter } from "next/router";
 
 import styles from "../styles/SignIn.module.css";
+import Head from "next/head";
 
 export default function SignIn({ providers }) {
   const router = useRouter();
 
   return (
     <div className={styles.logInContainer}>
+      <Head>
+        <title>Brigth Memory | SignIn</title>
+      </Head>
       <img
         src="/logo.svg"
         alt="Brigth Memory Logo"

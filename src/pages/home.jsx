@@ -10,6 +10,7 @@ import User from "../components/Home/User";
 import CreateButton from "../components/Home/CreateButton";
 
 import { getSession, signOut } from "next-auth/client";
+import Head from "next/head";
 
 import styles from "../styles/Home/home.module.css";
 
@@ -24,6 +25,9 @@ export default function Home() {
 
   return (
     <div className={styles.homeContainer}>
+      <Head>
+        <title>Brigth Memory | Home</title>
+      </Head>
       <div className={styles.mainContent}>
         <header>
           <User />
