@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./public/logo.svg"/>
   
-  <h1>"Um projeto para mudar a vida de estudantes."</h1>
+  <h2>"Um projeto para mudar a vida de estudantes."</h2>
 </div>
 
 ## Apresentações
