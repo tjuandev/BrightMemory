@@ -34,11 +34,11 @@ O Bright Memory surge com a ideia de apresentar aos estudantes o poderoso métod
 
 ### Como funciona o método?
 
-O Estudante irá criar os chamados Decks, que nada mais funcionam como sessões do aprendizado:
+1. O Estudante irá criar os chamados Decks, que nada mais funcionam como sessões do aprendizado:
 
-*colocar imagem dos decks aqui*
+<img src="./screenshots/card_screen.png"/>
 
-Dentro desses decks têm-se a possibilidade de criação de infinitos Cards de Estudos. Os Cards de estudos possuem a parte Frontal, onde o estudante normalmente escreve uma pergunta, apresenta um conceito ou uma palavra, e a parte Posterior, onde o estudante geralmente escreve uma resposta, algo relcionado ao conceito ou a tradução de uma palavra.
+2. Dentro desses decks têm-se a possibilidade de criação de infinitos Cards de Estudos. Os Cards de estudos possuem a parte Frontal, onde o estudante normalmente escreve uma pergunta, apresenta um conceito ou uma palavra, e a parte Posterior, onde o estudante geralmente escreve uma resposta, algo relcionado ao conceito ou a tradução de uma palavra.
 
 *imagem da criação dos cards*
 
