@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <a href="https://flashcards-mongodb.vercel.app/home#">
+  <a href="https://brigthmemory.vercel.app">
     <img src="./public/logo.svg" alt="Logo-Link-para-o-projeto">
   </a>
 
@@ -8,7 +8,7 @@
   
 <!-- TABLE OF CONTENTS -->
 
-<strong>Vem ver o projeto antes de ler a doc: </strong>[BrigthMemory](https://flashcards-mongodb.vercel.app/home#)
+<strong>Vem ver o projeto antes de ler a doc: </strong>[BrigthMemory](https://brigthmemory.vercel.app)
 
 <details open="open">
   <summary>Conteúdos</summary>
@@ -42,7 +42,7 @@ Dentro desses decks têm-se a possibilidade de criação de infinitos Cards de E
 
 E o intuito do Método é que o estudante tente memorizar a parte posterior, sendo a parte frontal, o gatilho para lembrar da parte posterior, após vista a parte posterior o Estudante pode escolher entre três níveis de dificuldade do aprendizado: díficil, médio e fácil. Respondendo no fácil, por exemplo, o estudante só irá fazer uma revisão do card num período maior de tempo, e o contrário acontece no nível díficil, isso tudo se baseando no efetivo *método de repetição espaçada* descrito em aprofudagem no blog [mosalingua.](https://www.mosalingua.com/pt/o-sistema-de-repeticao-espacada-memorizar-para-jamais-esquecer/#:~:text=O%20sistema%20de%20repeti%C3%A7%C3%A3o%20espa%C3%A7ada%20%C3%A9%20um%20m%C3%A9todo%20de%20memoriza%C3%A7%C3%A3o,curva%20do%20esquecimento%20de%20Ebbinghaus.&text=Esse%20m%C3%A9todo%20parte%20do%20princ%C3%ADpio,informa%C3%A7%C3%A3o%20deve%20ser%20revisada%20regularmente.)
 
-Aqui está os por quês de usar o [BrigthMemory](https://flashcards-mongodb.vercel.app/home#) para esses estudos:
+Aqui está os por quês de usar o [BrigthMemory](https://brigthmemory.vercel.app) para esses estudos:
 
 * Interface intuitiva que nenhum outro serviço oferece;
 * Gerenciamento automático dos FlashCards, proporcionando a definição perfeita dos intervalos de estudos :smile:;
