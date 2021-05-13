@@ -28,6 +28,8 @@
 
 ## Sobre o projeto
 
+<img src="./screenshots/deck_screen.png" alt="deck screen">
+
 O Bright Memory surge com a ideia de apresentar aos estudantes o poderoso método de FlashCards, que tem o poder de turbinar o aprendizado de qualquer coisa, desde a conceitos de programação a vocabulários de idiomas.
 
 ### Como funciona o método?
