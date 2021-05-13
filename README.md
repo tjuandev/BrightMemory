@@ -74,7 +74,7 @@ Contribuições é o que faz essa comunidade ser tão incrível, sinta se livre 
 Projeto distribuído sobre a licença do MIT.  Veja  `LICENSE` para mais informações.
 
 <!-- CONTACT -->
-## Conato
+## Contato
 
 **Eu sou Thiago Juan e sou o criador do BrigthMemory**
 
