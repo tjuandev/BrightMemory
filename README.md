@@ -180,11 +180,6 @@ Projeto distribuído sobre a licença do MIT.  Veja  `LICENSE` para mais informa
 
 **Eu sou Thiago Juan e sou o criador do BrigthMemory**
 
-<<<<<<< HEAD
-O método funciona da seguinte maneira:
->>>>>>> 2c162a53598bd921a4ab097785a1c0e43317da6f
-=======
 Quer falar comigo?
 * [Instagram](https://www.instagram.com/tjuan.dev/?hl=en)
 * Email: tpydeveloper@gmail.com
->>>>>>> 2c32b74579afb30ac45c2125cb6c94da00b83e99
