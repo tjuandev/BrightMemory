@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://flashcards-mongodb.vercel.app/home#">
-    <img src="logo.svg" alt="Logo-Link-para-o-projeto">
+    <img src="./public/logo.svg" alt="Logo-Link-para-o-projeto">
   </a>
 
   <h3 align="center">"Um projeto para ajudar estudantes do mundo inteiro...."</h3>  
