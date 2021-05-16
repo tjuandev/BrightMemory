@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import axios from "axios";
 
 const DeckContext = createContext({});
 
@@ -8,18 +9,13 @@ const DeckContextProvider = ({ children }) => {
 
   const [userId, setUserId] = useState(null);
 
-  let decks = []; // Var global to decks.
+  let decks = [];
 
   async function fetchDecks(id) {
-    // Feito
-    const data = await fetch("/api/deck/get", {
-      method: "POST",
-      body: JSON.stringify({ id: id }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const request = await axios.post("/api/deck/get", {
+      id,
     });
-    const deck = await data.json();
+    const deck = request.data;
 
     deck.forEach(() => {
       decks = [...deck];
@@ -48,26 +44,14 @@ const DeckContextProvider = ({ children }) => {
       created_at: new Date().getTime(),
     };
 
-    return await fetch("/api/deck/create", {
-      method: "POST",
-      body: JSON.stringify(deckSchema),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    return await axios.post("/api/deck/create", deckSchema);
   }
 
   async function updateInfo(action, deckId, cardsToStudyLength = 0) {
-    await fetch("api/deck/updateInfo", {
-      method: "POST",
-      body: JSON.stringify({
-        action,
-        deckId,
-        cardsToStudyLength,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    await axios.post("api/deck/updateInfo", {
+      action,
+      deckId,
+      cardsToStudyLength,
     });
 
     await fetchDecks(userId);
@@ -76,22 +60,20 @@ const DeckContextProvider = ({ children }) => {
   async function deleteDeck(id) {
     loadingDeck(true);
 
-    await fetch("/api/deck/delete", {
-      method: "POST",
-      body: JSON.stringify({ id }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(() => {
-      const changedArray = deckArray.filter((deck) => {
-        if (deck._id !== id) {
-          return true;
-        }
-      });
+    await axios
+      .post("/api/deck/delete", {
+        id,
+      })
+      .then(() => {
+        const changedArray = deckArray.filter((deck) => {
+          if (deck._id !== id) {
+            return true;
+          }
+        });
 
-      setDeckArray(changedArray);
-      loadingDeck(false);
-    });
+        setDeckArray(changedArray);
+        loadingDeck(false);
+      });
   }
 
   function loadingDeck(bool) {
@@ -99,17 +81,11 @@ const DeckContextProvider = ({ children }) => {
   }
 
   async function getUserId(email) {
-    const userId = await fetch("/api/auth/getUserId", {
-      method: "POST",
-      body: JSON.stringify({ email: email }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const userId = await axios.post("/api/auth/getUserId", {
+      email,
     });
 
-    userId.json().then((data) => {
-      setUserId(data._id);
-    });
+    setUserId(userId.data._id);
   }
 
   return (

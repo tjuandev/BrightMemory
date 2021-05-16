@@ -27,6 +27,7 @@ export default function CreateDeckModal() {
             loadingDeck(true);
 
             createDeck(item, color).then(() => {
+              console.log("oi");
               fetchDecks(userId);
               loadingDeck(false);
               deactivateModal("CreateDeckModal");

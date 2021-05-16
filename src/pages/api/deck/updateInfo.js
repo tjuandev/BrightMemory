@@ -14,7 +14,6 @@ export default async (req, res) => {
         { $inc: { all_cards: 1, "review_info.new_cards": 1 } }
       );
   } else if (req.body.action === "newCardReviewed") {
-    console.log("cheguei aqui!!!");
     await db
       .collection("decks")
       .updateOne({ _id: deckId }, { $inc: { "review_info.new_cards": -1 } });

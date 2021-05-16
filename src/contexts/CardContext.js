@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 
+import axios from "axios";
+
 export const CardContext = createContext({});
 
 export const CardContextProvider = ({ children }) => {
@@ -12,78 +14,46 @@ export const CardContextProvider = ({ children }) => {
 
   async function fetchCards(deckId) {
     let cards = [];
-
-    const data = await fetch("/api/card/get", {
-      method: "POST",
-      body: JSON.stringify({ deckId }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const response = await axios.post("/api/card/get", {
+      deckId,
     });
 
-    data.json().then((cardFetchArray) => {
-      cards = [...cardFetchArray];
-      setCurrentCard(cards[0]);
-      setCardsArray([...cards]);
-    });
+    cards = response.data;
+    setCurrentCard(cards[0]);
+    setCardsArray([...cards]);
   }
 
   async function cardsToStudy(deckId) {
-    const data = await fetch("/api/card/getReviewToday", {
-      method: "POST",
-      body: JSON.stringify({ deckId }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const response = await axios.post("/api/card/getReviewToday", {
+      deckId,
     });
-
-    return await data.json();
+    return await response.data;
   }
 
   async function createCard(deckId, front, back) {
     const today = new Date();
-
-    return await fetch("/api/card/create", {
-      method: "POST",
-      body: JSON.stringify({
-        deckId,
-        front,
-        back,
-        reviewWhen: today,
-        reviewTime: 2,
-        isNew: true,
-        isRepeat: false,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    return await axios.post("/api/card/create", {
+      deckId,
+      front,
+      back,
+      reviewWhen: today,
+      reviewTime: 2,
+      isNew: true,
+      isRepeat: false,
     });
   }
 
   async function deleteAllCards(deckId) {
-    return await fetch("/api/card/deleteAll", {
-      method: "DELETE",
-      body: JSON.stringify({
-        deckId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    return await axios.delete("/api/card/deleteAll", {
+      deckId,
     });
   }
 
   async function updateReview(daysToReview, isNotToRepeat = false) {
-    return await fetch("/api/card/review", {
-      method: "POST",
-      body: JSON.stringify({
-        currentCard,
-        daysToReview,
-        repeat,
-        isNotToRepeat,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    return await axios.post("/api/card/review", {
+      currentCard,
+      daysToReview,
+      isNotToRepeat,
     });
   }
 

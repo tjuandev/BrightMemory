@@ -30,7 +30,7 @@ export const ModalContextProvider = ({ children }) => {
         id,
         reviewInfo,
         colorClass,
-      }); // FIXME Posso dar um fetch decks só quando eu clicar!
+      });
     } else if (modal === "CardModal") {
       setIsCardModalOpen(true);
     } else if (modal === "CreateCardModal") {

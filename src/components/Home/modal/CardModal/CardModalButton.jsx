@@ -43,7 +43,6 @@ export default function Buttons() {
       <button
         onClick={() => {
           let isToNotRepeat = false;
-
           if (currentCard.isNew) {
             updateInfo("newCardReviewed", currentCard.deckId);
           }

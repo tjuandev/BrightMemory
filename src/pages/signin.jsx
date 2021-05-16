@@ -15,7 +15,7 @@ export default function SignIn({ providers }) {
       <img
         src="/logo.svg"
         alt="Brigth Memory Logo"
-        onClick={() => router.push("/p")}
+        onClick={() => router.push("/")}
       />
       {Object.values(providers).map((provider) => (
         <div key={provider.name}>
