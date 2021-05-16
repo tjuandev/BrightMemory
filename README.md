@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <a href="https://brigthmemory.vercel.app">
+  <a href="https://brightmemory.vercel.app">
     <img src="./public/logo.svg" alt="Logo-Link-para-o-projeto">
   </a>
 
@@ -8,7 +8,7 @@
   
 <!-- TABLE OF CONTENTS -->
 
-<strong>Vem ver o projeto antes de ler a doc: </strong>[BrigthMemory](https://brigthmemory.vercel.app)
+<strong>Vem ver o projeto antes de ler a doc: </strong>[BrigthMemory](https://brightmemory.vercel.app)
 
 <details open="open">
   <summary>Conteúdos</summary>
@@ -53,7 +53,7 @@ E o intuito do Método é que o estudante tente memorizar a parte posterior, sen
 * <img src="./screenshots/back.png"/>
 
 
-Aqui está os por quês de usar o [BrigthMemory](https://brigthmemory.vercel.app) para esses estudos:
+Aqui está os por quês de usar o [BrigthMemory](https://brightmemory.vercel.app) para esses estudos:
 
 * Interface intuitiva que nenhum outro serviço oferece;
 * Gerenciamento automático dos FlashCards, proporcionando a definição perfeita dos intervalos de estudos :smile:;
