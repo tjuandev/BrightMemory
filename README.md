@@ -82,7 +82,7 @@ Contribuições é o que faz essa comunidade ser tão incrível, sinta se livre 
 <!-- LICENSE -->
 ## Licença
 
-Projeto distribuído sobre a licença do MIT.  Veja  `LICENSE` para mais informações.
+Projeto distribuído sob a licença do MIT.  Veja  `LICENSE` para mais informações.
 
 <!-- CONTACT -->
 ## Contato
